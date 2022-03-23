@@ -142,6 +142,18 @@ public class MenuGUIExample {
 				//go to cart window
 			
 			}
+			else if(e.getSource() == rightSB) {
+				public void adjustmentValueChanged(AdjustmentEvent e) {
+					label.setText("Vertical Scrollbar value is:"+ s.getValue());	
+				}
+			}
+			else if(e.getSource() == appetizerSB) {
+				
+			}
+			else if(e.getSource() == entreeSB) {
+				
+			}
+			
 		}
 	}
 }
