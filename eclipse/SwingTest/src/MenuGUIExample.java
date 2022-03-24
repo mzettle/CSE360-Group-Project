@@ -122,30 +122,22 @@ public class MenuGUIExample {
 		frame.add(panel2, "South");
 		frame.pack();
 		frame.setVisible(true);
-	
 	}
 	
 	public static class ButtonListener implements ActionListener {
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource() == home) {
 				//go to menu home screen?
 			}
-			
 			else if(e.getSource() == login) {
 				//go to login/register
 			}
-			
 			else if(e.getSource() == cart) {
 				//go to cart window
-			
 			}
 			else if(e.getSource() == rightSB) {
-				public void adjustmentValueChanged(AdjustmentEvent e) {
-					label.setText("Vertical Scrollbar value is:"+ s.getValue());	
-				}
 			}
 			else if(e.getSource() == appetizerSB) {
 				
@@ -153,7 +145,6 @@ public class MenuGUIExample {
 			else if(e.getSource() == entreeSB) {
 				
 			}
-			
 		}
 	}
 }
