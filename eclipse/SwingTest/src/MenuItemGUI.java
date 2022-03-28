@@ -18,6 +18,9 @@ public class MenuItemGUI extends JPanel  {
 		JSpinner qtyJS;
 		JCheckBox condiment1CB, condiment2CB;
 		
+		
+		
+		//
 		//-------------------------------------
 		// JPanel
 		//-------------------------------------
