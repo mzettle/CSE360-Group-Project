@@ -189,6 +189,7 @@ public class MenuGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {			
 			int index = entreeButtons.indexOf(event.getSource());
 			System.out.println("Entree Item " + index + " Clicked");
+			MenuItemGUI itemWindow = new MenuItemGUI();
 		}
 	}
 	

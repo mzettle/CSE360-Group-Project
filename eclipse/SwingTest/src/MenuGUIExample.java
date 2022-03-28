@@ -4,17 +4,27 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import GUI.CreateCustomerGUI;
+import GUI.MenuItemGUI;
+
 public class MenuGUIExample {
+	
+	protected static JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, itemJP;
+	protected static JTextField searchTF;
+	protected static JButton login, home, cart, itemJB;
+	protected static JScrollBar rightSB, appetizerSB, entreeSB;
+	protected static JLabel appetizerJL, entreeJL, descriptionJL, item1JL;
+	
 	public static void main(String[] args) {
-		
+	
 		JFrame frame = new JFrame("Menu Home");
 		
-		JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel;
+		/*JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, itemJP;
 		JTextField searchTF;
-		JButton login, home, cart;
+		JButton login, home, cart, itemJB;
 		JScrollBar rightSB, appetizerSB, entreeSB;
-		JLabel appetizerJL, entreeJL, descriptionJL;
-	
+		JLabel appetizerJL, entreeJL, descriptionJL, item1JL;*/
+		
 		//-------------------------------------
 		// JPanel
 		//-------------------------------------
@@ -37,6 +47,12 @@ public class MenuGUIExample {
 		entreePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 1, 20));
 		entreePanel.setLayout(new BorderLayout());
 		entreePanel.setBackground(Color.LIGHT_GRAY);
+		
+		itemJP = new JPanel();
+		itemJP.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
+		itemJP.setLayout(new BorderLayout());
+		itemJP.setBackground(Color.WHITE);
+		itemJP.setPreferredSize(new Dimension(10, 10));
 		
 		panel2 = new JPanel();
 		panel2.setBorder(BorderFactory.createEmptyBorder(5, 30, 30, 30));
@@ -65,6 +81,11 @@ public class MenuGUIExample {
 		cart.setBorderPainted(true);
 		cart.addActionListener(new ButtonListener());
 		
+		itemJB = new JButton("Image");
+		itemJB.addActionListener(new ButtonListener());
+		
+		cart.setBorderPainted(true);
+		
 		//-------------------------------------
 		// JLabel
 		//-------------------------------------
@@ -81,6 +102,8 @@ public class MenuGUIExample {
 		descriptionJL = new JLabel(description, SwingConstants.CENTER);
 		descriptionJL .setForeground(Color.black);
 		descriptionJL .setFont(new Font(Font.SERIF , Font.PLAIN, 20));
+		
+		item1JL = new JLabel("Item Name");
 		
 		//-------------------------------------
 		// JScrollBar
@@ -102,9 +125,13 @@ public class MenuGUIExample {
 		
 		appetizerPanel.add(appetizerJL, BorderLayout.NORTH);
 		appetizerPanel.add(appetizerSB, BorderLayout.SOUTH);
+		appetizerPanel.add(itemJP);
 		
 		entreePanel.add(entreeJL, BorderLayout.NORTH);		
 		entreePanel.add(entreeSB, BorderLayout.SOUTH);
+		
+		itemJP.add(item1JL, BorderLayout.NORTH);
+		itemJP.add(itemJB);
 		
 		panel.add(appetizerPanel);
 		panel.add(entreePanel);
@@ -144,6 +171,10 @@ public class MenuGUIExample {
 			}
 			else if(e.getSource() == entreeSB) {
 				
+			}
+			else if(e.getSource() == itemJB) {
+				MenuItemGUI menuItemWindow = new MenuItemGUI();
+				menuItemWindow.MenuItemGUI();
 			}
 		}
 	}
