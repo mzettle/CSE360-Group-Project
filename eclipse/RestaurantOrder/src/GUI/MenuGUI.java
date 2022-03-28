@@ -22,13 +22,13 @@ import javax.swing.SwingConstants;
 
 
 public class MenuGUI extends JPanel {
-	protected JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems;
+	protected JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems, entreeItems;
 	protected JTextField searchTF;
 	protected JButton login, home, cart;
 	
-	protected ArrayList<JButton> appetizerButtons;
+	protected ArrayList<JButton> appetizerButtons, entreeButtons;
 	
-	protected JScrollBar rightSB, appetizerSB, entreeSB;
+	protected JScrollBar rightSB;
 	protected JLabel appetizerJL, entreeJL, descriptionJL;
 	
 	public MenuGUI() {
@@ -64,6 +64,7 @@ public class MenuGUI extends JPanel {
 		panel2.setBackground(Color.WHITE);
 		
 		appetizerItems = new JPanel();
+		entreeItems = new JPanel();
 		
 		//-------------------------------------
 		// JTextField
@@ -89,10 +90,18 @@ public class MenuGUI extends JPanel {
 		
 		//FIX THIS TO IMPORT MENUITEMS
 		appetizerButtons = new ArrayList<JButton>();
+		entreeButtons = new ArrayList<JButton>();
+		
 		for(int i = 0; i<10; i++) {
 			appetizerButtons.add(new JButton(new ImageIcon("fries.jpg")));
 			appetizerButtons.get(i).setPreferredSize(menuItemSize);
-			appetizerButtons.get(i).addActionListener(new MenuItemListener());
+			appetizerButtons.get(i).addActionListener(new AppetizerItemListener());
+		}
+		
+		for(int i=0; i<10; i++) {
+			entreeButtons.add(new JButton(new ImageIcon("steak.jpg")));
+			entreeButtons.get(i).setPreferredSize(menuItemSize);
+			entreeButtons.get(i).addActionListener(new EntreeItemListener());
 		}
 		
 		//-------------------------------------
@@ -118,16 +127,16 @@ public class MenuGUI extends JPanel {
 		rightSB = new JScrollBar();
 		rightSB.setPreferredSize(new Dimension(20, 0));
 		
-		appetizerSB = new JScrollBar(JScrollBar.HORIZONTAL, 30, 20, 0, 500);
-		
-		entreeSB = new JScrollBar(JScrollBar.HORIZONTAL, 30, 20, 0, 500);
-		
 		
 		//-------------------------------------
 		// populate menu items panels
 		//-------------------------------------
 		for(int i=0; i<appetizerButtons.size(); i++) {
 			appetizerItems.add(appetizerButtons.get(i));
+		}
+		
+		for(int i=0; i<entreeButtons.size(); i++) {
+			entreeItems.add(entreeButtons.get(i));
 		}
 		
 		
@@ -140,11 +149,10 @@ public class MenuGUI extends JPanel {
 		headerPanel.add(cart);
 		
 		appetizerPanel.add(appetizerJL, BorderLayout.NORTH);
-	//	appetizerPanel.add(appetizerSB, BorderLayout.SOUTH);
 		appetizerPanel.add(new JScrollPane(appetizerItems), BorderLayout.CENTER);
 		
 		entreePanel.add(entreeJL, BorderLayout.NORTH);		
-		entreePanel.add(entreeSB, BorderLayout.SOUTH);
+		entreePanel.add(new JScrollPane(entreeItems), BorderLayout.CENTER);
 		
 		panel.add(appetizerPanel);
 		panel.add(entreePanel);
@@ -166,12 +174,21 @@ public class MenuGUI extends JPanel {
 		frame.setVisible(true);
 	}
 	
-	private class MenuItemListener implements ActionListener{
+	private class AppetizerItemListener implements ActionListener{
 		@Override
 		
-		public void actionPerformed(ActionEvent event) {
+		public void actionPerformed(ActionEvent event) {			
 			int index = appetizerButtons.indexOf(event.getSource());
-			System.out.println("Menu Item " + index + " Clicked");
+			System.out.println("Appetizer Item " + index + " Clicked");
+		}
+	}
+	
+	private class EntreeItemListener implements ActionListener{
+		@Override
+		
+		public void actionPerformed(ActionEvent event) {			
+			int index = entreeButtons.indexOf(event.getSource());
+			System.out.println("Entree Item " + index + " Clicked");
 		}
 	}
 	
