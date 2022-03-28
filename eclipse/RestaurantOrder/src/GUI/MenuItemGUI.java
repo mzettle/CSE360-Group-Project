@@ -1,3 +1,4 @@
+package GUI;
 import java.awt.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -120,10 +121,10 @@ public class MenuItemGUI extends JPanel  {
 		frame.pack();
 		frame.setVisible(true);
 	}
-
+/*
 	public static void MenuItemGUI() {
 		new MenuItemGUI();
 	}
-
+*/
 }
 
