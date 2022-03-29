@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,6 +23,7 @@ import javax.swing.SwingConstants;
 
 
 public class MenuGUI extends JPanel {
+	JFrame frame;
 	protected JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems, entreeItems;
 	protected JTextField searchTF;
 	protected JButton login, home, cart;
@@ -35,7 +37,7 @@ public class MenuGUI extends JPanel {
 		
 		Dimension menuItemSize = new Dimension(100,100);
 		
-		JFrame frame = new JFrame("Menu Home");
+		frame = new JFrame("Menu Home");
 		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -180,6 +182,12 @@ public class MenuGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {			
 			int index = appetizerButtons.indexOf(event.getSource());
 			System.out.println("Appetizer Item " + index + " Clicked");
+			JDialog itemWindow = new MenuItemGUI();
+			itemWindow.pack();
+			frame.setEnabled(false);
+			itemWindow.setVisible(true);
+			frame.setEnabled(true);
+			frame.toFront();
 		}
 	}
 	
@@ -189,8 +197,15 @@ public class MenuGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {			
 			int index = entreeButtons.indexOf(event.getSource());
 			System.out.println("Entree Item " + index + " Clicked");
-			MenuItemGUI itemWindow = new MenuItemGUI();
+			JDialog itemWindow = new MenuItemGUI();
+			itemWindow.pack();
+			frame.setEnabled(false);
+			itemWindow.setVisible(true);
+			frame.setEnabled(true);
+			frame.toFront();
+			
 		}
 	}
+	
 	
 }
