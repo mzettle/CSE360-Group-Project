@@ -6,11 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 	
-public class MenuItemGUI extends JPanel  {
+public class MenuItemGUI extends JDialog  {
 	
 	public MenuItemGUI() {
-		
-		JFrame frame = new JFrame("Menu Home");
 		
 		JPanel headerPanel, panel, panel2;
 		JLabel headerJL, descriptionJL, ingredientsJL, condimentsJL, qtyJL;
@@ -91,7 +89,7 @@ public class MenuItemGUI extends JPanel  {
 		
 		//-------------------------------------
 		// JCheckBox
-		//------------------------------------_
+		//-------------------------------------
 		condiment1CB = new JCheckBox("Ranch");
 		condiment2CB = new JCheckBox("BBQ");
 		
@@ -103,9 +101,9 @@ public class MenuItemGUI extends JPanel  {
 		panel.add(descriptionTA);
 		panel.add(ingredientsJL);
 		panel.add(ingredientsTA);
-		panel.add(condimentsJL);
-		panel.add(condiment1CB);
-		panel.add(condiment2CB);
+//		panel.add(condimentsJL);
+//		panel.add(condiment1CB);
+//		panel.add(condiment2CB);
 		panel2.add(addToCartJB);
 		panel2.add(qtyJL);
 		panel2.add(qtyJS);
@@ -113,18 +111,12 @@ public class MenuItemGUI extends JPanel  {
 		//-------------------------------------
 		// add to frame				
 		//-------------------------------------
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(500, 300));
-		frame.add(headerPanel, "North");
-		frame.add(panel, "Center");
-		frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setPreferredSize(new Dimension(500, 300));
+		add(headerPanel, "North");
+		add(panel, "Center");
+		add(panel2, "South");
+		setModal(true);
 	}
-/*
-	public static void MenuItemGUI() {
-		new MenuItemGUI();
-	}
-*/
 }
 
