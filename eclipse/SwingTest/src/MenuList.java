@@ -27,18 +27,32 @@ public class MenuList {
 	}*/
 	
 	public void addToCart(MenuItem item, int qnty){
-		shoppingCart.add(item)
+		//- To be used only in Item Description Pop-Ups
+		item.setQuantity(qnty);
+		shoppingCart.add(item);
 	}
 	
-	public void removeFromCart(MenuItem item, int qnty) {
-		
+	public void removeFromCart(int index, int qnty) {
+		//- To be used only in Cart List; 
+		//- Takes in the index of the ShoppingCart so
+		//- a searchArray function isn't required. 
+		int itemQnty = shoppingCart.get(index).getQuantity();
+		if(qnty >= itemQnty) {
+			shoppingCart.remove(index);
+		}else {
+			int newQnty = itemQnty - qnty;
+			shoppingCart.get(index).setQuantity(newQnty);
+		}
 	}
 	
-	public int placeOrder(paymentInfo info) {
+	//- Probably calculated in the GUI
+	/*public int placeOrder(PayInfo info) {
 		int waitTime = 0;
-		
+		for(MenuItem index : shoppingCart) {
+			
+		}
 		return waitTime;
-	}
+	}*/
 }
 
 public class MenuItem{
@@ -49,7 +63,7 @@ public class MenuItem{
 	private int qnty;
 	private String customization;
 	
-	//- Qnty added to facilitate addToCart function better
+	//- Quantity added to facilitate addToCart function better
 	//- Customization String chosen rather than Array of customization. 
 	//- Plans to use a TSV format?
 	
@@ -95,6 +109,10 @@ public class MenuItem{
 	
 	public String getCustomization() {
 		return this.customization;
+	}
+	
+	public void setQuantity(int newQnty) {
+		this.qnty = newQnty;
 	}
 }
 
