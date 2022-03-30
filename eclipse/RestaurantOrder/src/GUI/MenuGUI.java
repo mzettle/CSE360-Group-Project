@@ -94,14 +94,14 @@ public class MenuGUI extends JPanel {
 		appetizerButtons = new ArrayList<JButton>();
 		entreeButtons = new ArrayList<JButton>();
 		
-		for(int i = 0; i<10; i++) {
-			appetizerButtons.add(new JButton(new ImageIcon("fries.jpg")));
+		for(int i = 0; i<Main.menu.appetizerArray.size(); i++) {
+			appetizerButtons.add(new JButton(new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath())));
 			appetizerButtons.get(i).setPreferredSize(menuItemSize);
 			appetizerButtons.get(i).addActionListener(new AppetizerItemListener());
 		}
 		
-		for(int i=0; i<10; i++) {
-			entreeButtons.add(new JButton(new ImageIcon("steak.jpg")));
+		for(int i=0; i<Main.menu.entreeArray.size(); i++) {
+			entreeButtons.add(new JButton(new ImageIcon(Main.menu.entreeArray.get(i).getPicPath())));
 			entreeButtons.get(i).setPreferredSize(menuItemSize);
 			entreeButtons.get(i).addActionListener(new EntreeItemListener());
 		}
@@ -174,6 +174,7 @@ public class MenuGUI extends JPanel {
 		frame.add(panel2, "South");
 		frame.pack();
 		frame.setVisible(true);
+		
 	}
 	
 	private class AppetizerItemListener implements ActionListener{

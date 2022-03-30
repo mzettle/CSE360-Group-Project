@@ -12,6 +12,14 @@ public class MenuList {
 	public ArrayList<MenuItem> shoppingCart;
 //	public AccountDatabase accounts; //probably not needed here, can be seperated from menulist
 	
+	public MenuList() {
+		appetizerArray = new ArrayList<MenuItem>();
+		entreeArray = new ArrayList<MenuItem>();
+		dessertArray = new ArrayList<MenuItem>();
+		drinkArray = new ArrayList<MenuItem>();
+		shoppingCart = new ArrayList<MenuItem>();
+	}
+	
 	public boolean addItem(MenuItem item, String category) {
 		if(category.equals("appetizer")) {
 			appetizerArray.add(item);
@@ -54,20 +62,24 @@ public class MenuList {
 	}
 	
 	public boolean readFile(File inputFile) {
+		System.out.println("readfile called");
+		int importErrors = 0;
 		try {
 			BufferedReader TSVReader = new BufferedReader(new FileReader(inputFile));
 			
 			String line = null;
 			String[] row;
 			
-			while(line != null) {
+			while((line = TSVReader.readLine()) != null) {
 				row = line.split("\t");
-				System.out.println("item1: " + row[0] + " item2: " + row[1]);
-				line = TSVReader.readLine();
+				
+				//insert a new item to the menu (TSV file row is built like this: food category-food name-food description-path to picture-food price
+				if(!addItem(new MenuItem(row[1], row[2], row[3],  Double.parseDouble(row[4]), 0), row[0])) importErrors++;
 			}
 			
 			TSVReader.close();
 			
+			System.out.println("There were " + importErrors + "menu items that could not be imported from file.");
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
