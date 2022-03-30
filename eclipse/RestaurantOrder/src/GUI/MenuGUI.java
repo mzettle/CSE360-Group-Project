@@ -26,7 +26,7 @@ import javax.swing.SwingConstants;
 
 
 public class MenuGUI extends JPanel {
-	JFrame frame;
+	//JFrame frame;
 	protected JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems, entreeItems;
 	protected JTextField searchTF;
 	protected JButton login, home, cart;
@@ -40,7 +40,6 @@ public class MenuGUI extends JPanel {
 		
 		Dimension menuItemSize = new Dimension(100,100);
 		
-		frame = new JFrame("Menu Home");
 		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -82,15 +81,15 @@ public class MenuGUI extends JPanel {
 		//-------------------------------------
 		home = new JButton("Home");
 		home.setBorderPainted(true);
-	//	home.addActionListener(new ButtonListener());
+		home.addActionListener(new ButtonListener());
 				
 		login = new JButton("Sign In/Register");
 		login.setBorderPainted(true);
-	//	login.addActionListener(new ButtonListener());
+		login.addActionListener(new ButtonListener());
 		
 		cart = new JButton("Place Order");
 		cart.setBorderPainted(true);
-	//	cart.addActionListener(new ButtonListener());
+		cart.addActionListener(new ButtonListener());
 		
 		
 		//FIX THIS TO IMPORT MENUITEMS
@@ -116,7 +115,7 @@ public class MenuGUI extends JPanel {
 		appetizerJL.setForeground(Color.black);
 		appetizerJL.setFont(new Font(Font.SERIF, Font.BOLD, 20));
 		
-		entreeJL = new JLabel("EntrÃ©es", SwingConstants.LEFT);
+		entreeJL = new JLabel("Entrées", SwingConstants.LEFT);
 		entreeJL .setForeground(Color.black);
 		entreeJL .setFont(new Font(Font.SERIF, Font.BOLD, 20));
 		
@@ -169,47 +168,21 @@ public class MenuGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1100, 600));
-		frame.add(rightSB, "East");
-		frame.add(headerPanel, "North");
-		frame.add(panel, "Center");
-		frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+	//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//	frame.setPreferredSize(new Dimension(1100, 600));
+		setLayout(new BorderLayout());
+		add(rightSB, "East");
+		add(headerPanel, "North");
+		add(panel, "Center");
+		add(panel2, "South");
+	//	frame.pack();
+	//	frame.setVisible(true);
 		
 	}
 	
-	private class AppetizerItemListener implements ActionListener{
-		@Override
-		
-		public void actionPerformed(ActionEvent event) {			
-			int index = appetizerButtons.indexOf(event.getSource());
-			System.out.println("Appetizer Item " + index + " Clicked");
-			JDialog itemWindow = new MenuItemGUI("appetizer", index);
-			itemWindow.pack();
-			frame.setEnabled(false);
-			itemWindow.setVisible(true);
-			while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
-			frame.setEnabled(true);
-			frame.toFront();
-		}
-	}
-	
-	private class EntreeItemListener implements ActionListener{
-		@Override
-		
-		public void actionPerformed(ActionEvent event) {			
-			int index = entreeButtons.indexOf(event.getSource());
-			System.out.println("Entree Item " + index + " Clicked");
-			JDialog itemWindow = new MenuItemGUI("entree", index);
-			itemWindow.pack();
-			frame.setEnabled(false);
-			itemWindow.setVisible(true);
-			while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
-			frame.setEnabled(true);
-			frame.toFront();
-			
+	private class ButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == login) Main.switchView("SignInGUI");
 		}
 	}
 		
@@ -254,11 +227,11 @@ public class MenuGUI extends JPanel {
 				System.out.println(itemTypeString + " Item " + index + " Clicked");
 				JDialog itemWindow = new MenuItemGUI(itemTypeString, index);
 				itemWindow.pack();
-				frame.setEnabled(false);
+				//frame.setEnabled(false);
 				itemWindow.setVisible(true);
 				while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
-				frame.setEnabled(true);
-				frame.toFront();
+				//frame.setEnabled(true);
+				//frame.toFront();
 				
 			}
 	}

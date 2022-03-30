@@ -52,7 +52,7 @@ public class MenuItemGUI extends JDialog  {
 		
 		panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-		panel.setLayout(new GridLayout(7, 1));
+		panel.setLayout(new GridLayout(5, 1));
 		panel.setBackground(Color.LIGHT_GRAY);
 		
 		panel2 = new JPanel();

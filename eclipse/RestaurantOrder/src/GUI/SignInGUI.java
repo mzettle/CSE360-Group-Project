@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class SignInGUI extends JPanel {
 
-	protected JFrame frame = new JFrame("Sign In");
+//	protected JFrame frame = new JFrame("Sign In");
 	
 	protected JPanel headerPanel, panel1, panel2;
 	protected JLabel headerJL, unJL, pwJL;
@@ -77,7 +77,7 @@ public class SignInGUI extends JPanel {
 		home = new JButton("Home");
 		home.setBorderPainted(true);
 		home.setPreferredSize(new Dimension(40, 40));
-	//	home.addActionListener(new ButtonListener());
+		home.addActionListener(new ButtonListener());
 				
 		loginHeader = new JButton("Sign In/Register");
 		loginHeader .setBorderPainted(true);
@@ -118,13 +118,14 @@ public class SignInGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1100, 600));
-		frame.add(headerPanel, "North");
-		frame.add(panel1, "Center");
-		frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+	//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//	frame.setPreferredSize(new Dimension(1100, 600));
+		setLayout(new BorderLayout());
+		add(headerPanel, "North");
+		add(panel1, "Center");
+		add(panel2, "South");
+	//	frame.pack();
+	//	frame.setVisible(true);
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -149,6 +150,8 @@ public class SignInGUI extends JPanel {
 				System.out.println(loginCred);
 				//new AccountGUI();
 			}
+			
+			if(evt.getSource() == home) Main.switchView("MenuGUI");
 		}
 	}
 }
