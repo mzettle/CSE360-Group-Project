@@ -1,6 +1,5 @@
 package GUI;
 import java.awt.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,8 +9,8 @@ public class MenuItemGUI extends JDialog  {
 	
 	public MenuItemGUI(String category, int index) {
 		
-		String itemName, itemDesc, itemPic;
-		double itemPrice;
+		String itemName = "", itemDesc = "", itemPic = "";
+		double itemPrice = -1.0;
 		
 		switch(category) {
 		case "appetizer":	itemName = Main.menu.appetizerArray.get(index).getName();
@@ -23,6 +22,10 @@ public class MenuItemGUI extends JDialog  {
 							itemDesc = Main.menu.entreeArray.get(index).getDesc();
 							itemPic = Main.menu.entreeArray.get(index).getPicPath();
 							itemPrice = Main.menu.entreeArray.get(index).getPrice();
+							break;
+		case "dessert":
+							break;
+		case "drink":		
 							break;
 							
 		default:			return;
@@ -120,7 +123,9 @@ public class MenuItemGUI extends JDialog  {
 		//-------------------------------------
 		// add to panels				
 		//-------------------------------------
-		headerPanel.add(headerJL);
+		headerPanel.add(new JLabel(itemName));
+		headerPanel.add(new JLabel("---", SwingConstants.CENTER)); //center label for header
+		headerPanel.add(new JLabel("$" + String.format("%.2f", itemPrice), SwingConstants.RIGHT));
 		panel.add(picLabel);
 		panel.add(descriptionJL);
 		panel.add(descriptionTA);
@@ -142,6 +147,7 @@ public class MenuItemGUI extends JDialog  {
 		add(panel, "Center");
 		add(panel2, "South");
 		setModal(true);
+		setName("Add Item to Cart");
 	}
 }
 

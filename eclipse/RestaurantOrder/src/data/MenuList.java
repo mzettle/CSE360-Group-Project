@@ -79,7 +79,7 @@ public class MenuList {
 			
 			TSVReader.close();
 			
-			System.out.println("There were " + importErrors + "menu items that could not be imported from file.");
+			System.out.println("There were " + importErrors + " menu items that could not be imported from file.");
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
