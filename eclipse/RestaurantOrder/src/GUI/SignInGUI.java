@@ -25,6 +25,8 @@ public class SignInGUI extends JPanel {
 
 		Dimension signInSize = new Dimension(100,100);
 		
+		Color  gray   = new Color(222, 222,  222);
+		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		headerPanel.setLayout(new GridLayout(1, 4));
@@ -33,12 +35,12 @@ public class SignInGUI extends JPanel {
 		panel1 = new JPanel();
 		panel1.setBorder(BorderFactory.createEmptyBorder(20, 220, 25, 220));
 		panel1.setLayout(new GridLayout(5, 1, 10, 10));	
-		panel1.setBackground(Color.LIGHT_GRAY);
+		panel1.setBackground(gray);
 		
 		panel2 = new JPanel();
 		panel2.setBorder(BorderFactory.createEmptyBorder(25, 200, 70, 200));
 		panel2.setLayout(new GridLayout(1, 2, 10, 10));	
-		panel2.setBackground(Color.LIGHT_GRAY);
+		panel2.setBackground(gray);
 		
 		//-------------------------------------
 		// JLabel
