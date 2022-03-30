@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +21,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+
 
 
 public class MenuGUI extends JPanel {
@@ -94,16 +97,16 @@ public class MenuGUI extends JPanel {
 		appetizerButtons = new ArrayList<JButton>();
 		entreeButtons = new ArrayList<JButton>();
 		
-		for(int i = 0; i<10; i++) {
-			appetizerButtons.add(new JButton(new ImageIcon("fries.jpg")));
+		for(int i = 0; i<Main.menu.appetizerArray.size(); i++) {
+			appetizerButtons.add(new JButton(new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath())));
 			appetizerButtons.get(i).setPreferredSize(menuItemSize);
-			appetizerButtons.get(i).addActionListener(new AppetizerItemListener());
+			appetizerButtons.get(i).addActionListener(new ItemListener());
 		}
 		
-		for(int i=0; i<10; i++) {
-			entreeButtons.add(new JButton(new ImageIcon("steak.jpg")));
+		for(int i=0; i<Main.menu.entreeArray.size(); i++) {
+			entreeButtons.add(new JButton(new ImageIcon(Main.menu.entreeArray.get(i).getPicPath())));
 			entreeButtons.get(i).setPreferredSize(menuItemSize);
-			entreeButtons.get(i).addActionListener(new EntreeItemListener());
+			entreeButtons.get(i).addActionListener(new ItemListener());
 		}
 		
 		//-------------------------------------
@@ -117,7 +120,7 @@ public class MenuGUI extends JPanel {
 		entreeJL .setForeground(Color.black);
 		entreeJL .setFont(new Font(Font.SERIF, Font.BOLD, 20));
 		
-		String description = "Click on an item to view its description or add it to your cart.﻿ Make sure to sign in or create an account!";
+		String description = "Click on an item to view its description or add it to your cart. Make sure to sign in or create an account!";
 		
 		descriptionJL = new JLabel(description, SwingConstants.CENTER);
 		descriptionJL .setForeground(Color.black);
@@ -174,6 +177,7 @@ public class MenuGUI extends JPanel {
 		frame.add(panel2, "South");
 		frame.pack();
 		frame.setVisible(true);
+		
 	}
 	
 	private class AppetizerItemListener implements ActionListener{
@@ -182,10 +186,11 @@ public class MenuGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {			
 			int index = appetizerButtons.indexOf(event.getSource());
 			System.out.println("Appetizer Item " + index + " Clicked");
-			JDialog itemWindow = new MenuItemGUI();
+			JDialog itemWindow = new MenuItemGUI("appetizer", index);
 			itemWindow.pack();
 			frame.setEnabled(false);
 			itemWindow.setVisible(true);
+			while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
 			frame.setEnabled(true);
 			frame.toFront();
 		}
@@ -197,14 +202,65 @@ public class MenuGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {			
 			int index = entreeButtons.indexOf(event.getSource());
 			System.out.println("Entree Item " + index + " Clicked");
-			JDialog itemWindow = new MenuItemGUI();
+			JDialog itemWindow = new MenuItemGUI("entree", index);
 			itemWindow.pack();
 			frame.setEnabled(false);
 			itemWindow.setVisible(true);
+			while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
 			frame.setEnabled(true);
 			frame.toFront();
 			
 		}
+	}
+		
+		private class ItemListener implements ActionListener{
+			@Override
+			
+			public void actionPerformed(ActionEvent event) {			
+				int[] indexArr = new int[4];
+				
+				indexArr[0] = entreeButtons.indexOf(event.getSource());
+				indexArr[1] = appetizerButtons.indexOf(event.getSource());
+				indexArr[2] = -1; // for dessert
+				indexArr[3] = -1; //for drinks
+				
+				//look for maximum index and use this to determine type of item selected
+				int itemType = 0, index = indexArr[0];
+				String itemTypeString = "null";
+				
+				for(int i=1; i<indexArr.length; i++) {
+					if(indexArr[i] > index) {
+						itemType = i;
+						index = indexArr[i];
+					}
+				}
+				
+				switch(itemType){
+				case 0:
+					itemTypeString = "entree";
+					break;
+				case 1:
+					itemTypeString = "appetizer";
+					break;
+				case 2:
+					itemTypeString = "dessert";
+					break;
+				case 3:
+					itemTypeString = "drink";
+					break;
+				default:
+					return;
+				}
+				System.out.println(itemTypeString + " Item " + index + " Clicked");
+				JDialog itemWindow = new MenuItemGUI(itemTypeString, index);
+				itemWindow.pack();
+				frame.setEnabled(false);
+				itemWindow.setVisible(true);
+				while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
+				frame.setEnabled(true);
+				frame.toFront();
+				
+			}
 	}
 	
 	

@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class MenuList {
@@ -6,20 +9,24 @@ public class MenuList {
 	public ArrayList<MenuItem> dessertArray;
 	public ArrayList<MenuItem> drinkArray;
 	public ArrayList<MenuItem> shoppingCart;
-	public AccountDatabase accounts;
+//	public AccountDatabase accounts; //probably not needed here, can be seperated from menulist
 	
-	public void addItem(MenuItem item, String category) {
+	public boolean addItem(MenuItem item, String category) {
 		if(category.equals("appetizer")) {
 			appetizerArray.add(item);
+			return true;
 		}else if(category.equals("entree")) {
 			entreeArray.add(item);
+			return true;
 		}else if(category.equals("dessert")) {
 			dessertArray.add(item);
+			return true;
 		}else if(category.equals("drink")) {
 			drinkArray.add(item);
+			return true;
 		}
 		//- Invalid: return
-		return;
+		return false;
 	}
 	
 	/*public void removeItem(MenuItem item){
@@ -45,6 +52,28 @@ public class MenuList {
 		}
 	}
 	
+	public boolean readFile(File inputFile) {
+		try {
+			BufferedReader TSVReader = new BufferedReader(new FileReader(inputFile));
+			
+			String line = null;
+			String[] row;
+			
+			while(line != null) {
+				row = line.split("\t");
+				System.out.println("item1: " + row[0] + " item2: " + row[1]);
+				line = TSVReader.readLine();
+			}
+			
+			TSVReader.close();
+			
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
 	//- Probably calculated in the GUI
 	/*public int placeOrder(PayInfo info) {
 		int waitTime = 0;
@@ -55,108 +84,7 @@ public class MenuList {
 	}*/
 }
 
-public class MenuItem{
-	private String name;
-	private String description;
-	private double price;
-	private String picturePath;
-	private int qnty;
-	private String customization;
-	
-	//- Quantity added to facilitate addToCart function better
-	//- Customization String chosen rather than Array of customization. 
-	//- Plans to use a TSV format?
-	
-	//- Overloaded function for base function / default initialization on menuArrays
-	public MenuItem(String name, String desc, String pPath, double price, int qnty) {
-		this.name = name;
-		this.description = desc;
-		this.picturePath = pPath;
-		this.price = price;
-		this.qnty = qnty;
-		this.customization = "";
-	}
-	
-	//- Overloaded function for optional customization
-	public MenuItem(String name, String desc, String pPath, double price, int qnty, String custom) {
-		this.name = name;
-		this.description = desc;
-		this.picturePath = pPath;
-		this.price = price;
-		this.qnty = 0;
-		this.customization = custom;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	
-	public String getDesc() {
-		return this.description;
-	}
-	
-	public double getDouble() {
-		return this.price;
-	}
-	
-	public String getPicPath() {
-		return this.picturePath;
-	}
-	
-	public int getQuantity() {
-		return this.qnty;
-	}
-	
-	public String getCustomization() {
-		return this.customization;
-	}
-	
-	public void setQuantity(int newQnty) {
-		this.qnty = newQnty;
-	}
-}
 
-public class AccountDatabase{
-	public ArrayList<Account> users;
-	
-	public AccountDatabase() {
-		this.users = [];
-	}
-	
-	public Account lookUpUser(String name) {
-		Account index;
-		return index;
-	}
-	
-	public boolean verifyPass(String password) {
-		boolean valid = false;
-		// If password matches, valid = true;
-		return valid;
-	}	
-	
-	public void addAccount(Account account) {
-		// Used add(int, account) since add(account) returns an integer
-		users.add(users.size(), account);
-	}
-	
-	public void removeAccount(Account account) {
-		users.remove(account);
-	}
-}
 
-public class Customer{
-	private ContactInfo contactInfo;
-	private PayInfo paymentInfo;
-	
-	public void removeInfo(int Index) {
-		
-	}
-	
-	public void setContactInfo(String firstName, String lastName, int ccNumber) {
-		
-	}
-	
-	public void setPayInfo() {
-		
-	}
-}
+
+
