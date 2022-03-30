@@ -90,7 +90,7 @@ public class AccountGUI extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 	}
-		
+	
 		
 		/*Color  gray   = new Color(222, 222,  222);
 		

@@ -159,9 +159,5 @@ public class ContactInformationGUI extends JPanel {
 			
 		}
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new ContactInformationGUI();
-	}
-
+	
 }
