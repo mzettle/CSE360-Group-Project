@@ -8,8 +8,6 @@ import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
-
-
 public class ContactInformationGUI extends JPanel {
 
 	protected JFrame frame = new JFrame("Your Account");
@@ -18,7 +16,6 @@ public class ContactInformationGUI extends JPanel {
 	protected JLabel headerJL, fnameJL, lnameJL, phoneJL, emailJL;
 	protected JButton loginHeader, home, cart, updateJB, backJB;
 	protected JTextField fnameTF, lnameTF, phoneTF, emailTF;
-	//protected JTextArea contactTA, paymentTA;
 	
 	public ContactInformationGUI() {
 		
@@ -30,7 +27,7 @@ public class ContactInformationGUI extends JPanel {
 		headerPanel.setBackground(Color.LIGHT_GRAY);
 		
 		panel1 = new JPanel();
-		panel1.setBorder(BorderFactory.createEmptyBorder(60, 240, 60, 260));
+		panel1.setBorder(BorderFactory.createEmptyBorder(60, 220, 60, 260));
 		panel1.setLayout(new GridLayout(4, 2, 40, 40));
 		panel1.setBackground(gray);
 		
@@ -166,4 +163,5 @@ public class ContactInformationGUI extends JPanel {
 		// TODO Auto-generated method stub
 		new ContactInformationGUI();
 	}
+
 }
