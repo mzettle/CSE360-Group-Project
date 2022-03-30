@@ -39,7 +39,7 @@ public class MenuItem{
 		return this.description;
 	}
 	
-	public double getDouble() {
+	public double getPrice() {
 		return this.price;
 	}
 	

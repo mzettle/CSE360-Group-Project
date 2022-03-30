@@ -117,7 +117,7 @@ public class MenuGUI extends JPanel {
 		entreeJL .setForeground(Color.black);
 		entreeJL .setFont(new Font(Font.SERIF, Font.BOLD, 20));
 		
-		String description = "Click on an item to view its description or add it to your cart.﻿ Make sure to sign in or create an account!";
+		String description = "Click on an item to view its description or add it to your cart. Make sure to sign in or create an account!";
 		
 		descriptionJL = new JLabel(description, SwingConstants.CENTER);
 		descriptionJL .setForeground(Color.black);
@@ -183,7 +183,7 @@ public class MenuGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {			
 			int index = appetizerButtons.indexOf(event.getSource());
 			System.out.println("Appetizer Item " + index + " Clicked");
-			JDialog itemWindow = new MenuItemGUI();
+			JDialog itemWindow = new MenuItemGUI("appetizer", index);
 			itemWindow.pack();
 			frame.setEnabled(false);
 			itemWindow.setVisible(true);
@@ -198,7 +198,7 @@ public class MenuGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {			
 			int index = entreeButtons.indexOf(event.getSource());
 			System.out.println("Entree Item " + index + " Clicked");
-			JDialog itemWindow = new MenuItemGUI();
+			JDialog itemWindow = new MenuItemGUI("entree", index);
 			itemWindow.pack();
 			frame.setEnabled(false);
 			itemWindow.setVisible(true);

@@ -10,7 +10,7 @@ public class MenuList {
 	public ArrayList<MenuItem> dessertArray;
 	public ArrayList<MenuItem> drinkArray;
 	public ArrayList<MenuItem> shoppingCart;
-//	public AccountDatabase accounts; //probably not needed here, can be seperated from menulist
+//	public AccountDatabase accounts; //probably not needed here, can be separated from menulist
 	
 	public MenuList() {
 		appetizerArray = new ArrayList<MenuItem>();

@@ -8,10 +8,29 @@ import javax.swing.*;
 	
 public class MenuItemGUI extends JDialog  {
 	
-	public MenuItemGUI() {
+	public MenuItemGUI(String category, int index) {
+		
+		String itemName, itemDesc, itemPic;
+		double itemPrice;
+		
+		switch(category) {
+		case "appetizer":	itemName = Main.menu.appetizerArray.get(index).getName();
+							itemDesc = Main.menu.appetizerArray.get(index).getDesc();
+							itemPic = Main.menu.appetizerArray.get(index).getPicPath();
+							itemPrice = Main.menu.appetizerArray.get(index).getPrice();
+							break;
+		case "entree":		itemName = Main.menu.entreeArray.get(index).getName();
+							itemDesc = Main.menu.entreeArray.get(index).getDesc();
+							itemPic = Main.menu.entreeArray.get(index).getPicPath();
+							itemPrice = Main.menu.entreeArray.get(index).getPrice();
+							break;
+							
+		default:			return;
+		
+		}
 		
 		JPanel headerPanel, panel, panel2;
-		JLabel headerJL, descriptionJL, ingredientsJL, condimentsJL, qtyJL;
+		JLabel headerJL, picLabel, descriptionJL, ingredientsJL, condimentsJL, qtyJL;
 		JButton addToCartJB;
 		JTextArea descriptionTA,ingredientsTA;
 		JSpinner qtyJS;
@@ -44,11 +63,14 @@ public class MenuItemGUI extends JDialog  {
 		//-------------------------------------
 		// new JLabels
 		//-------------------------------------
-		headerJL = new JLabel("Food Name", SwingConstants.CENTER);
+		headerJL = new JLabel(itemName + " - $" + itemPrice, SwingConstants.CENTER);
 		headerJL.setForeground(Color.black);
 		headerJL.setFont(new Font("Time", Font.BOLD, 10));
 		
-		descriptionJL = new JLabel("Description", SwingConstants.LEFT);
+		picLabel = new JLabel(new ImageIcon(itemPic));
+		picLabel.setPreferredSize(new Dimension(100,100));
+		
+		descriptionJL = new JLabel("Description:", SwingConstants.LEFT);
 		descriptionJL.setForeground(Color.black);
 		descriptionJL.setFont(new Font("Time", Font.BOLD, 10));
 		
@@ -70,6 +92,8 @@ public class MenuItemGUI extends JDialog  {
 		descriptionTA.setEditable(false);
 		descriptionTA.setBackground(Color.LIGHT_GRAY);
 		descriptionTA.setFont(new Font("Time", Font.BOLD, 10));
+		descriptionTA.setLineWrap(true);
+		descriptionTA.setText(itemDesc);
 		
 		ingredientsTA = new JTextArea(20,20);
 		ingredientsTA.setEditable(false);
@@ -97,6 +121,7 @@ public class MenuItemGUI extends JDialog  {
 		// add to panels				
 		//-------------------------------------
 		headerPanel.add(headerJL);
+		panel.add(picLabel);
 		panel.add(descriptionJL);
 		panel.add(descriptionTA);
 		panel.add(ingredientsJL);
@@ -112,7 +137,7 @@ public class MenuItemGUI extends JDialog  {
 		// add to frame				
 		//-------------------------------------
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setPreferredSize(new Dimension(500, 300));
+		setPreferredSize(new Dimension(500, 1000));
 		add(headerPanel, "North");
 		add(panel, "Center");
 		add(panel2, "South");
