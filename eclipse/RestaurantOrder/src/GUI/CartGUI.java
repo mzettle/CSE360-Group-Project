@@ -8,9 +8,9 @@ import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
-public class CartGUI extends JPanel {
+public class CartGUI extends JDialog {
 
-	protected JFrame frame = new JFrame("Cart");
+	//protected JFrame frame = new JFrame("Cart");
 	
 	protected JPanel headerPanel, panel1, panel2, panel3;
 	protected JLabel headerJL, reviewJL, subtotalJL;
@@ -108,13 +108,13 @@ public class CartGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1100, 600));
-		frame.add(headerPanel, "North");
-		frame.add(panel1, "Center");
-		frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setPreferredSize(new Dimension(1100, 600));
+		add(headerPanel, "North");
+		add(panel1, "Center");
+		add(panel2, "South");
+		//pack();
+		setVisible(true);
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -126,7 +126,15 @@ public class CartGUI extends JPanel {
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent evt) {
-			
+			if(evt.getSource()== home) {
+				
+			}
+			else if(evt.getSource()== cart) {
+		
+			}
+			else if(evt.getSource()== loginHeader) {
+				
+			}
 		}
 	}
 	public static void main(String []args) {

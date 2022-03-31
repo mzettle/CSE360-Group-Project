@@ -77,7 +77,7 @@ public class SignInGUI extends JPanel {
 		home = new JButton("Home");
 		home.setBorderPainted(true);
 		home.setPreferredSize(new Dimension(40, 40));
-	//	home.addActionListener(new ButtonListener());
+		home.addActionListener(new ButtonListener());
 				
 		loginHeader = new JButton("Sign In/Register");
 		loginHeader .setBorderPainted(true);
@@ -87,7 +87,7 @@ public class SignInGUI extends JPanel {
 		cart = new JButton("Place Order");
 		cart.setBorderPainted(true);
 		cart.setPreferredSize(new Dimension(40, 40));
-	//	cart.addActionListener(new ButtonListener());
+		cart.addActionListener(new ButtonListener());
 		
 		login = new JButton("Login");
 		login.setBorderPainted(true);
@@ -144,12 +144,38 @@ public class SignInGUI extends JPanel {
 	private class ButtonListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent evt) {
+			if(evt.getSource()== home) {
+				
+			}
+			else if(evt.getSource()== cart) {
+				
+				JDialog itemWindow = new CartGUI();
+				itemWindow.pack();
+				frame.setEnabled(false);
+				itemWindow.setVisible(true);
+				while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
+				frame.setEnabled(true);
+				frame.toFront();
+				
+			}
+			else if(evt.getSource()== loginHeader) {
+				
+			}
+			
+			
+			
+			
 			if(evt.getSource() == login) {
 				String loginCred = username+password;
 				System.out.println(loginCred);
 				//new AccountGUI();
 			}
+			
 		}
+	}
+	public static void main(String []args) {
+		new SignInGUI();
+		
 	}
 }
 
