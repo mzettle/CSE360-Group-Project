@@ -90,7 +90,7 @@ public class AccountGUI extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 	}
-		
+	
 		
 		/*Color  gray   = new Color(222, 222,  222);
 		
@@ -204,15 +204,20 @@ public class AccountGUI extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
+	*/
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent evt) {
-			if(evt.getSource()== editContactJB) {
+			if(evt.getSource()== home) {
 				
-				new ContactInformationGUI();
+			}
+			else if(evt.getSource()== cart) {
+		
+			}
+			else if(evt.getSource()== loginHeader) {
+				
 			}
 		}
-	}*/
+	}
 	
 }

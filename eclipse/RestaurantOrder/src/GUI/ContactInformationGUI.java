@@ -156,12 +156,16 @@ public class ContactInformationGUI extends JPanel {
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent evt) {
-			
+			if(evt.getSource()== home) {
+				
+			}
+			else if(evt.getSource()== cart) {
+		
+			}
+			else if(evt.getSource()== loginHeader) {
+				
+			}	
 		}
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new ContactInformationGUI();
-	}
-
+	
 }
