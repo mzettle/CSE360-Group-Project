@@ -43,17 +43,17 @@ public class AccountGUI extends JPanel {
 		home = new JButton("Home");
 		home.setBorderPainted(true);
 		home.setPreferredSize(new Dimension(40, 40));
-	//	home.addActionListener(new actionPerformed());
+		home.addActionListener(new ButtonListener());
 				
 		loginHeader = new JButton("Sign In/Register");
 		loginHeader .setBorderPainted(true);
 		loginHeader .setPreferredSize(new Dimension(40, 40));
-	//	loginHeader.addActionListener(new actionPerformed());
+		loginHeader.addActionListener(new ButtonListener());
 		
 		cart = new JButton("Place Order");
 		cart.setBorderPainted(true);
 		cart.setPreferredSize(new Dimension(40, 40));
-	//	cart.addActionListener(new actionPerformed());
+		cart.addActionListener(new ButtonListener());
 		
 		contactInfo = new JButton("Contact Information");
 		contactInfo.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
@@ -207,16 +207,10 @@ public class AccountGUI extends JPanel {
 	*/
 	
 	private class ButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent evt) {
-			if(evt.getSource()== home) {
-				Main.switchView("MenuGUI");
-			}
-			else if(evt.getSource()== cart) {
-		
-			}
-			else if(evt.getSource()== loginHeader) {
-				
-			}
+		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
+			if(event.getSource() == cart) Main.switchView("CartGUI");
+			if(event.getSource() == home)Main.switchView("MenuGUI");
 		}
 	}
 	

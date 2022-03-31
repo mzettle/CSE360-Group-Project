@@ -70,17 +70,17 @@ public class CartGUI extends JPanel {
 		home = new JButton("Home");
 		home.setBorderPainted(true);
 		home.setPreferredSize(new Dimension(40, 40));
-		//	home.addActionListener(new ButtonListener());
+		home.addActionListener(new ButtonListener());
 				
 		loginHeader = new JButton("Sign In/Register");
 		loginHeader .setBorderPainted(true);
 		loginHeader .setPreferredSize(new Dimension(40, 40));
-		//loginHeader.addActionListener(new ButtonListener());
+		loginHeader.addActionListener(new ButtonListener());
 		
 		cart = new JButton("Place Order");
 		cart.setBorderPainted(true);
 		cart.setPreferredSize(new Dimension(40, 40));
-		//	cart.addActionListener(new ButtonListener());
+		cart.addActionListener(new ButtonListener());
 		
 		returnJB = new JButton("Return To Menu");
 		returnJB.setBorderPainted(true);
@@ -122,22 +122,16 @@ public class CartGUI extends JPanel {
 	
 	private class TextFieldListener implements ActionListener{
 		@Override
-		public void actionPerformed(ActionEvent evt) {
+		public void actionPerformed(ActionEvent event) {
 			
 		}
 	}
 	
 	private class ButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent evt) {
-			if(evt.getSource()== home) {
-				
-			}
-			else if(evt.getSource()== cart) {
-		
-			}
-			else if(evt.getSource()== loginHeader) {
-				
-			}
+		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
+			if(event.getSource() == cart) Main.switchView("CartGUI");
+			if(event.getSource() == home)Main.switchView("MenuGUI");
 		}
 	}
 

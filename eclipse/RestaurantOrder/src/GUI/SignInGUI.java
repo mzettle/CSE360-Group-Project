@@ -12,8 +12,6 @@ import javax.swing.*;
 //import GUI.LoginGUI.ButtonListener;
 
 public class SignInGUI extends JPanel {
-
-//	protected JFrame frame = new JFrame("Sign In");
 	
 	protected JPanel headerPanel, panel1, panel2;
 	protected JLabel headerJL, unJL, pwJL;
@@ -80,7 +78,7 @@ public class SignInGUI extends JPanel {
 		loginHeader = new JButton("Sign In/Register");
 		loginHeader .setBorderPainted(true);
 		loginHeader .setPreferredSize(new Dimension(40, 40));
-	//	loginHeader.addActionListener(new ButtonListener());
+		loginHeader.addActionListener(new ButtonListener());
 		
 		cart = new JButton("Place Order");
 		cart.setBorderPainted(true);
@@ -139,38 +137,11 @@ public class SignInGUI extends JPanel {
 	
 	private class ButtonListener implements ActionListener{
 		@Override
-		public void actionPerformed(ActionEvent evt) {
-			if(evt.getSource()== home) {
-				
-			}
-			else if(evt.getSource()== cart) {
-				/*
-				JDialog itemWindow = new CartGUI();
-				itemWindow.pack();
-				frame.setEnabled(false);
-				itemWindow.setVisible(true);
-				while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
-				frame.setEnabled(true);
-				frame.toFront();
-				*/
-				
-			}
-			else if(evt.getSource()== loginHeader) {
-				
-			}
+		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
+			if(event.getSource() == cart) Main.switchView("CartGUI");
+			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
-			
-			
-			
-			if(evt.getSource() == login) {
-				String loginCred = username+password;
-				System.out.println(loginCred);
-				Main.switchView("AccountGUI");
-				//new AccountGUI();
-			}
-			
-
-			if(evt.getSource() == home) Main.switchView("MenuGUI");
 
 		}
 	}
