@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class SignInGUI extends JPanel {
 
-	protected JFrame frame = new JFrame("Sign In");
+//	protected JFrame frame = new JFrame("Sign In");
 	
 	protected JPanel headerPanel, panel1, panel2;
 	protected JLabel headerJL, unJL, pwJL;
@@ -22,10 +22,8 @@ public class SignInGUI extends JPanel {
 	protected String username, password;
 	
 	public SignInGUI() {
-
-		Dimension signInSize = new Dimension(100,100);
 		
-		Color  gray   = new Color(222, 222,  222);
+		Color gray = new Color(222, 222,  222);
 		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -118,13 +116,11 @@ public class SignInGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1100, 600));
-		frame.add(headerPanel, "North");
-		frame.add(panel1, "Center");
-		frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+
+		setLayout(new BorderLayout());
+		add(headerPanel, "North");
+		add(panel1, "Center");
+		add(panel2, "South");
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -148,7 +144,15 @@ public class SignInGUI extends JPanel {
 				
 			}
 			else if(evt.getSource()== cart) {
-			
+				/*
+				JDialog itemWindow = new CartGUI();
+				itemWindow.pack();
+				frame.setEnabled(false);
+				itemWindow.setVisible(true);
+				while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
+				frame.setEnabled(true);
+				frame.toFront();
+				*/
 				
 			}
 			else if(evt.getSource()== loginHeader) {
@@ -164,11 +168,11 @@ public class SignInGUI extends JPanel {
 				//new AccountGUI();
 			}
 			
+
+			if(evt.getSource() == home) Main.switchView("MenuGUI");
+
 		}
 	}
-	public static void main(String []args) {
-		new SignInGUI();
-		
-	}
+
 }
 
