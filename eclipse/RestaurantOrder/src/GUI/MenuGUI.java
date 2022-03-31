@@ -14,7 +14,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -27,28 +26,28 @@ import javax.swing.SwingConstants;
 
 public class MenuGUI extends JPanel {
 	//JFrame frame;
-	protected JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems, entreeItems;
+	protected JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems, entreeItems, drinkPanel, dessertPanel, drinkItems, dessertItems;
 	protected JTextField searchTF;
 	protected JButton login, home, cart;
 	
-	protected ArrayList<JButton> appetizerButtons, entreeButtons;
+	protected ArrayList<JButton> appetizerButtons, entreeButtons, dessertButtons, drinkButtons;
 	
 	protected JScrollBar rightSB;
-	protected JLabel appetizerJL, entreeJL, descriptionJL;
+	protected JLabel appetizerJL, entreeJL, descriptionJL, drinkJL, dessertJL;
 	
 	public MenuGUI() {
 		
-		Dimension menuItemSize = new Dimension(100,100);
+		Dimension menuItemSize = new Dimension(200,130);
 		
 		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		headerPanel.setLayout(new GridLayout(1, 4));
 		headerPanel.setBackground(Color.LIGHT_GRAY);
-	
+		
 		panel = new JPanel();
-		panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
-		panel.setLayout(new GridLayout(2, 1, 10, 10));	
+		panel.setLayout(new GridLayout(5,1));
+		panel.setPreferredSize(new Dimension(0,800));
 		panel.setBackground(Color.WHITE);
 		
 		appetizerPanel = new JPanel();
@@ -60,6 +59,16 @@ public class MenuGUI extends JPanel {
 		entreePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 1, 20));
 		entreePanel.setLayout(new BorderLayout());
 		entreePanel.setBackground(Color.LIGHT_GRAY);
+		
+		dessertPanel = new JPanel();
+		dessertPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 1, 20));
+		dessertPanel.setLayout(new BorderLayout());
+		dessertPanel.setBackground(Color.LIGHT_GRAY);
+		
+		drinkPanel = new JPanel();
+		drinkPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 1, 20));
+		drinkPanel.setLayout(new BorderLayout());
+		drinkPanel.setBackground(Color.LIGHT_GRAY);
 		
 		panel2 = new JPanel();
 		panel2.setBorder(BorderFactory.createEmptyBorder(5, 30, 30, 30));
@@ -95,17 +104,42 @@ public class MenuGUI extends JPanel {
 		//FIX THIS TO IMPORT MENUITEMS
 		appetizerButtons = new ArrayList<JButton>();
 		entreeButtons = new ArrayList<JButton>();
+		dessertButtons = new ArrayList<JButton>();
+		drinkButtons = new ArrayList<JButton>();
 		
 		for(int i = 0; i<Main.menu.appetizerArray.size(); i++) {
 			appetizerButtons.add(new JButton(new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath())));
 			appetizerButtons.get(i).setPreferredSize(menuItemSize);
 			appetizerButtons.get(i).addActionListener(new ItemListener());
+			appetizerButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
+			appetizerButtons.get(i).setHorizontalTextPosition(SwingConstants.CENTER);
 		}
 		
 		for(int i=0; i<Main.menu.entreeArray.size(); i++) {
-			entreeButtons.add(new JButton(new ImageIcon(Main.menu.entreeArray.get(i).getPicPath())));
+			entreeButtons.add(new JButton(Main.menu.entreeArray.get(i).getName() ,new ImageIcon(Main.menu.entreeArray.get(i).getPicPath())));
 			entreeButtons.get(i).setPreferredSize(menuItemSize);
 			entreeButtons.get(i).addActionListener(new ItemListener());
+			entreeButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
+			entreeButtons.get(i).setHorizontalTextPosition(SwingConstants.CENTER);
+			
+		}
+		
+		for(int i=0; i<Main.menu.dessertArray.size(); i++) {
+			dessertButtons.add(new JButton(Main.menu.dessertArray.get(i).getName() ,new ImageIcon(Main.menu.dessertArray.get(i).getPicPath())));
+			dessertButtons.get(i).setPreferredSize(menuItemSize);
+			dessertButtons.get(i).addActionListener(new ItemListener());
+			dessertButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
+			dessertButtons.get(i).setHorizontalTextPosition(SwingConstants.CENTER);
+			
+		}
+		
+		for(int i=0; i<Main.menu.drinkArray.size(); i++) {
+			drinkButtons.add(new JButton(Main.menu.drinkArray.get(i).getName() ,new ImageIcon(Main.menu.drinkArray.get(i).getPicPath())));
+			drinkButtons.get(i).setPreferredSize(menuItemSize);
+			drinkButtons.get(i).addActionListener(new ItemListener());
+			drinkButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
+			drinkButtons.get(i).setHorizontalTextPosition(SwingConstants.CENTER);
+			
 		}
 		
 		//-------------------------------------
@@ -119,6 +153,14 @@ public class MenuGUI extends JPanel {
 		entreeJL .setForeground(Color.black);
 		entreeJL .setFont(new Font(Font.SERIF, Font.BOLD, 20));
 		
+		dessertJL = new JLabel("Desserts", SwingConstants.LEFT);
+		dessertJL .setForeground(Color.black);
+		dessertJL .setFont(new Font(Font.SERIF, Font.BOLD, 20));
+		
+		drinkJL = new JLabel("Drinks", SwingConstants.LEFT);
+		drinkJL .setForeground(Color.black);
+		drinkJL .setFont(new Font(Font.SERIF, Font.BOLD, 20));
+		
 		String description = "Click on an item to view its description or add it to your cart. Make sure to sign in or create an account!";
 		
 		descriptionJL = new JLabel(description, SwingConstants.CENTER);
@@ -127,9 +169,7 @@ public class MenuGUI extends JPanel {
 		
 		//-------------------------------------
 		// JScrollBar
-		//-------------------------------------
-		rightSB = new JScrollBar();
-		rightSB.setPreferredSize(new Dimension(20, 0));
+		//------------------------------------
 		
 		
 		//-------------------------------------
@@ -143,6 +183,13 @@ public class MenuGUI extends JPanel {
 			entreeItems.add(entreeButtons.get(i));
 		}
 		
+		for(int i=0; i<drinkButtons.size(); i++) {
+			entreeItems.add(drinkButtons.get(i));
+		}
+
+		for(int i=0; i<dessertButtons.size(); i++) {
+			entreeItems.add(dessertButtons.get(i));
+		}
 		
 		//-------------------------------------
 		// add to panels				
@@ -158,8 +205,16 @@ public class MenuGUI extends JPanel {
 		entreePanel.add(entreeJL, BorderLayout.NORTH);		
 		entreePanel.add(new JScrollPane(entreeItems), BorderLayout.CENTER);
 		
+		dessertPanel.add(dessertJL, BorderLayout.NORTH);		
+		dessertPanel.add(new JScrollPane(dessertItems), BorderLayout.CENTER);
+		
+		drinkPanel.add(drinkJL, BorderLayout.NORTH);		
+		drinkPanel.add(new JScrollPane(drinkItems), BorderLayout.CENTER);
+		
 		panel.add(appetizerPanel);
 		panel.add(entreePanel);
+		panel.add(dessertPanel);
+		panel.add(drinkPanel);
 		
 		panel2.add(descriptionJL, BorderLayout.CENTER);
 		
@@ -171,9 +226,8 @@ public class MenuGUI extends JPanel {
 	//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	//	frame.setPreferredSize(new Dimension(1100, 600));
 		setLayout(new BorderLayout());
-		add(rightSB, "East");
 		add(headerPanel, "North");
-		add(panel, "Center");
+		add(new JScrollPane(panel), "Center");
 		add(panel2, "South");
 	//	frame.pack();
 	//	frame.setVisible(true);
@@ -194,8 +248,8 @@ public class MenuGUI extends JPanel {
 				
 				indexArr[0] = entreeButtons.indexOf(event.getSource());
 				indexArr[1] = appetizerButtons.indexOf(event.getSource());
-				indexArr[2] = -1; // for dessert
-				indexArr[3] = -1; //for drinks
+				indexArr[2] = dessertButtons.indexOf(event.getSource());; // for dessert
+				indexArr[3] = drinkButtons.indexOf(event.getSource());; //for drinks
 				
 				//look for maximum index and use this to determine type of item selected
 				int itemType = 0, index = indexArr[0];

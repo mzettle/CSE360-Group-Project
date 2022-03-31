@@ -22,10 +22,8 @@ public class SignInGUI extends JPanel {
 	protected String username, password;
 	
 	public SignInGUI() {
-
-		Dimension signInSize = new Dimension(100,100);
 		
-		Color  gray   = new Color(222, 222,  222);
+		Color gray = new Color(222, 222,  222);
 		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -118,14 +116,11 @@ public class SignInGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-	//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//	frame.setPreferredSize(new Dimension(1100, 600));
+
 		setLayout(new BorderLayout());
 		add(headerPanel, "North");
 		add(panel1, "Center");
 		add(panel2, "South");
-	//	frame.pack();
-	//	frame.setVisible(true);
 	}
 	
 	private class TextFieldListener implements ActionListener{
