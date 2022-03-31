@@ -44,12 +44,12 @@ public class PaymentInformationGUI extends JPanel {
 		//-------------------------------------
 		billingJL = new JLabel("Billing Information", SwingConstants.LEFT);
 		billingJL.setForeground(Color.BLACK);
-		billingJL.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+		billingJL.setFont(new Font(Font.SERIF, Font.PLAIN, 30));
 		billingJL.setPreferredSize(new Dimension(5,5));
 		
 		cardJL = new JLabel("Credit Card Information", SwingConstants.LEFT);
 		cardJL.setForeground(Color.BLACK);
-		cardJL.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+		cardJL.setFont(new Font(Font.SERIF, Font.PLAIN, 30));
 		cardJL.setPreferredSize(new Dimension(5,5));
 		
 		fnameJL = new JLabel("First Name", SwingConstants.CENTER);

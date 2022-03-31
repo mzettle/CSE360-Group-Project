@@ -26,8 +26,9 @@ public class CartGUI extends JPanel {
 		headerPanel.setBackground(Color.LIGHT_GRAY);
 		
 		panel1 = new JPanel();
-		panel1.setBorder(BorderFactory.createEmptyBorder(0, 220, 0, 220));
-		panel1.setLayout(new GridLayout(3, 1, 0, 0));
+		panel1.setBorder(BorderFactory.createEmptyBorder(15, 100, 20, 100));
+		panel1.setLayout(new BorderLayout());
+		//panel1.setLayout(new GridLayout(3, 1, 0, 0));
 		panel1.setBackground(gray);
 		
 		panel2 = new JPanel();
@@ -37,7 +38,7 @@ public class CartGUI extends JPanel {
 		
 		panel3 = new JPanel();
 		panel3.setBorder(BorderFactory.createEmptyBorder(60, 220, 60, 260));
-		panel3.setLayout(new GridLayout(4, 8, 40, 40));
+		panel3.setLayout(new GridLayout(4, 9, 10, 10));
 		panel3.setBackground(gray);
 		
 		//-------------------------------------
@@ -52,10 +53,14 @@ public class CartGUI extends JPanel {
 		reviewJL.setForeground(Color.BLACK);
 		reviewJL.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
 		
+		reviewJL.setPreferredSize(new Dimension(50,80));
+		
 		String subtotal = "Subtotal : $";
 		subtotalJL = new JLabel(subtotal, SwingConstants.CENTER);
 		subtotalJL.setForeground(Color.BLACK);
 		subtotalJL.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
+		subtotalJL.setPreferredSize(new Dimension(50,80));
+		
 		
 		//-------------------------------------
 		// JButton
@@ -75,12 +80,12 @@ public class CartGUI extends JPanel {
 		cart.setPreferredSize(new Dimension(40, 40));
 		//	cart.addActionListener(new ButtonListener());
 		
-		returnJB = new JButton("Update Profile");
+		returnJB = new JButton("Return To Menu");
 		returnJB.setBorderPainted(true);
 		returnJB.setPreferredSize(new Dimension(40, 40));
 		//	editContactJB.addActionListener(new ButtonListener());
 		
-		checkoutJB = new JButton("Back");
+		checkoutJB = new JButton("Continue To Checkout");
 		checkoutJB.setBorderPainted(true);
 		checkoutJB.setPreferredSize(new Dimension(40, 40));
 		//	editPaymentJB.addActionListener(new ButtonListener());
@@ -92,12 +97,10 @@ public class CartGUI extends JPanel {
 		headerPanel.add(loginHeader);
 		headerPanel.add(cart);
 		
-		
-	
-		panel1.add(reviewJL);
+		panel1.add(reviewJL, "North");
 		JScrollPane scrollPane = new JScrollPane(panel3);
 		panel1.add(scrollPane);
-		panel1.add(subtotalJL);
+		panel1.add(subtotalJL, "South");
 		
 		panel2.add(returnJB);
 		panel2.add(checkoutJB);
