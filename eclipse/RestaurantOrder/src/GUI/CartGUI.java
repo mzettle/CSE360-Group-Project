@@ -85,12 +85,12 @@ public class CartGUI extends JPanel {
 		returnJB = new JButton("Return To Menu");
 		returnJB.setBorderPainted(true);
 		returnJB.setPreferredSize(new Dimension(40, 40));
-		//	editContactJB.addActionListener(new ButtonListener());
+		returnJB.addActionListener(new ButtonListener());
 		
 		checkoutJB = new JButton("Continue To Checkout");
 		checkoutJB.setBorderPainted(true);
 		checkoutJB.setPreferredSize(new Dimension(40, 40));
-		//	editPaymentJB.addActionListener(new ButtonListener());
+		checkoutJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------
 		// add to panels				
@@ -131,7 +131,8 @@ public class CartGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
-			if(event.getSource() == home)Main.switchView("MenuGUI");
+			if(event.getSource() == home || event.getSource() == returnJB)Main.switchView("MenuGUI");
+			//if(event.getSource() == checkoutJB) Main.switchView(TOOL_TIP_TEXT_KEY);
 		}
 	}
 

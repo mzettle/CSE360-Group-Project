@@ -10,8 +10,6 @@ import javax.swing.*;
 
 public class ContactInformationGUI extends JPanel {
 
-	protected JFrame frame = new JFrame("Your Account");
-	
 	protected JPanel headerPanel, panel1, panel2;
 	protected JLabel headerJL, fnameJL, lnameJL, phoneJL, emailJL;
 	protected JButton loginHeader, home, cart, updateJB, backJB;
@@ -138,13 +136,11 @@ public class ContactInformationGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1100, 600));
-		frame.add(headerPanel, "North");
-		frame.add(scrollPane, "Center");
-		frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+		setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(1100, 600));
+		add(headerPanel, "North");
+		add(scrollPane, "Center");
+		add(panel2, "South");
 	}
 	
 	private class TextFieldListener implements ActionListener{

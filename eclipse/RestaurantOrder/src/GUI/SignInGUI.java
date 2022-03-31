@@ -93,7 +93,7 @@ public class SignInGUI extends JPanel {
 		register = new JButton("Register");
 		register.setBorderPainted(true);
 		register.setPreferredSize(new Dimension(50, 50));
-	//	register.addActionListener(new ButtonListener());
+		register.addActionListener(new ButtonListener());
 		
 		//-------------------------------------
 		// add to panels				
@@ -142,7 +142,9 @@ public class SignInGUI extends JPanel {
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
-
+			if(event.getSource() == login)Main.switchView("AccountGUI");
+			
+			//if(event.getSource() == register)Main.switchView("");
 		}
 	}
 
