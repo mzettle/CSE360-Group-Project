@@ -20,6 +20,8 @@ public class CartGUI extends JPanel {
 		
 		Color  gray   = new Color(222, 222,  222);
 		
+		
+		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		headerPanel.setLayout(new GridLayout(1, 4));
@@ -108,7 +110,9 @@ public class CartGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-	//	setPreferredSize(new Dimension(1100, 600));
+		setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(1100, 600));
+		
 		add(headerPanel, "North");
 		add(panel1, "Center");
 		add(panel2, "South");
