@@ -95,6 +95,7 @@ public class AccountGUI extends JPanel {
 			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
 			if(event.getSource() == contactInfo)Main.switchView("ContactInformationGUI");
+			if(event.getSource() == paymentInfo)Main.switchView("PaymentInformationGUI");
 			
 		}
 	}

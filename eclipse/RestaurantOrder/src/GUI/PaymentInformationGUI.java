@@ -9,8 +9,6 @@ import java.awt.event.FocusListener;
 import javax.swing.*;
 
 public class PaymentInformationGUI extends JPanel {
-
-	protected JFrame frame = new JFrame("PaymentInformation");
 	
 	protected JPanel headerPanel, panel1, panel2;
 	protected JLabel billingJL, cardJL, fnameJL, lnameJL, addressJL, cityJL, stateJL, zipJL, 
@@ -135,8 +133,6 @@ public class PaymentInformationGUI extends JPanel {
 		//-------------------------------------
 		// Combo Box
 		//-------------------------------------
-		
-		
 		String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", 
 				"California", "Colorado", "Connecticut", "District of Columbia", "Delaware", 
 				"Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", 
@@ -183,7 +179,7 @@ public class PaymentInformationGUI extends JPanel {
 		backJB = new JButton("Back");
 		backJB.setBorderPainted(true);
 		backJB.setPreferredSize(new Dimension(40, 40));
-		//	editPaymentJB.addActionListener(new ButtonListener());
+		backJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------
 		// add to panels				
@@ -228,13 +224,11 @@ public class PaymentInformationGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1100, 600));
-		frame.add(headerPanel, "North");
-		frame.add(scrollPane, "Center");
-		frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+		setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(1100, 600));
+		add(headerPanel, "North");
+		add(scrollPane, "Center");
+		add(panel2, "South");	
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -249,6 +243,8 @@ public class PaymentInformationGUI extends JPanel {
 			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
+			
+			if(event.getSource() == backJB)Main.switchView("AccountGUI");
 		}
 	}
 }

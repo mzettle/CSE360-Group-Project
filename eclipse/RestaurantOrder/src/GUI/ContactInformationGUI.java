@@ -108,7 +108,7 @@ public class ContactInformationGUI extends JPanel {
 		backJB = new JButton("Back");
 		backJB.setBorderPainted(true);
 		backJB.setPreferredSize(new Dimension(40, 40));
-		//	editPaymentJB.addActionListener(new ButtonListener());
+		backJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------
 		// add to panels				
@@ -154,7 +154,9 @@ public class ContactInformationGUI extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
-			if(event.getSource() == home)Main.switchView("MenuGUI");	
+			if(event.getSource() == home)Main.switchView("MenuGUI");
+			
+			if(event.getSource() == backJB) Main.switchView("AccountGUI");
 		}
 	}
 	

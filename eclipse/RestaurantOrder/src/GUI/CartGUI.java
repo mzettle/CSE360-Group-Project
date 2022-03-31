@@ -9,8 +9,6 @@ import java.awt.event.FocusListener;
 import javax.swing.*;
 
 public class CartGUI extends JPanel {
-
-	//protected JFrame frame = new JFrame("Cart");
 	
 	protected JPanel headerPanel, panel1, panel2, panel3;
 	protected JLabel headerJL, reviewJL, subtotalJL;
@@ -19,8 +17,6 @@ public class CartGUI extends JPanel {
 	public CartGUI() {
 		
 		Color  gray   = new Color(222, 222,  222);
-		
-		
 		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -112,12 +108,9 @@ public class CartGUI extends JPanel {
 		//-------------------------------------
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(1100, 600));
-		
 		add(headerPanel, "North");
 		add(panel1, "Center");
 		add(panel2, "South");
-		//pack();
-	//	setVisible(true);
 	}
 	
 	private class TextFieldListener implements ActionListener{
