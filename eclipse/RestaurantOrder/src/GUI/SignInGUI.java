@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class SignInGUI extends JPanel {
 
-//	protected JFrame frame = new JFrame("Sign In");
+	protected JFrame frame = new JFrame("Sign In");
 	
 	protected JPanel headerPanel, panel1, panel2;
 	protected JLabel headerJL, unJL, pwJL;
@@ -22,8 +22,10 @@ public class SignInGUI extends JPanel {
 	protected String username, password;
 	
 	public SignInGUI() {
+
+		Dimension signInSize = new Dimension(100,100);
 		
-		Color gray = new Color(222, 222,  222);
+		Color  gray   = new Color(222, 222,  222);
 		
 		headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -85,7 +87,7 @@ public class SignInGUI extends JPanel {
 		cart = new JButton("Place Order");
 		cart.setBorderPainted(true);
 		cart.setPreferredSize(new Dimension(40, 40));
-	//	cart.addActionListener(new ButtonListener());
+		cart.addActionListener(new ButtonListener());
 		
 		login = new JButton("Login");
 		login.setBorderPainted(true);
@@ -116,11 +118,13 @@ public class SignInGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-
-		setLayout(new BorderLayout());
-		add(headerPanel, "North");
-		add(panel1, "Center");
-		add(panel2, "South");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setPreferredSize(new Dimension(1100, 600));
+		frame.add(headerPanel, "North");
+		frame.add(panel1, "Center");
+		frame.add(panel2, "South");
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -140,14 +144,31 @@ public class SignInGUI extends JPanel {
 	private class ButtonListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent evt) {
+			if(evt.getSource()== home) {
+				
+			}
+			else if(evt.getSource()== cart) {
+			
+				
+			}
+			else if(evt.getSource()== loginHeader) {
+				
+			}
+			
+			
+			
+			
 			if(evt.getSource() == login) {
 				String loginCred = username+password;
 				System.out.println(loginCred);
 				//new AccountGUI();
 			}
 			
-			if(evt.getSource() == home) Main.switchView("MenuGUI");
 		}
+	}
+	public static void main(String []args) {
+		new SignInGUI();
+		
 	}
 }
 
