@@ -8,7 +8,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
-public class CartGUI extends JDialog {
+public class CartGUI extends JPanel {
 
 	//protected JFrame frame = new JFrame("Cart");
 	
@@ -108,7 +108,6 @@ public class CartGUI extends JDialog {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(1100, 600));
 		add(headerPanel, "North");
 		add(panel1, "Center");

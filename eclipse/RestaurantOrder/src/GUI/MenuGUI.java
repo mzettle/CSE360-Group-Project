@@ -237,6 +237,7 @@ public class MenuGUI extends JPanel {
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == login) Main.switchView("SignInGUI");
+			if(event.getSource() == cart) Main.switchView("CartGUI");
 		}
 	}
 		

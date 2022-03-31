@@ -37,6 +37,7 @@ public class Main {
 		//add all gui interfaces to the cardlayout
 		panel.add(new MenuGUI(), "MenuGUI");
 		panel.add(new SignInGUI(), "SignInGUI");
+		panel.add(new CartGUI(), "CartGUI");
 		
 		//show MenuGUI first
 		cards.show(panel, "MenuGUI");
