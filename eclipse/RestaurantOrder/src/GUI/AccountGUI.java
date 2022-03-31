@@ -82,13 +82,13 @@ public class AccountGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1100, 600));
-		frame.add(headerPanel, "North");
-		frame.add(panel1, "Center");
+	//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setPreferredSize(new Dimension(1100, 600));
+		add(headerPanel, "North");
+		add(panel1, "Center");
 		//frame.add(panel2, "South");
-		frame.pack();
-		frame.setVisible(true);
+	//	frame.pack();
+	//	frame.setVisible(true);
 	}
 	
 		
@@ -209,7 +209,7 @@ public class AccountGUI extends JPanel {
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent evt) {
 			if(evt.getSource()== home) {
-				
+				Main.switchView("MenuGUI");
 			}
 			else if(evt.getSource()== cart) {
 		

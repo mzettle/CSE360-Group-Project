@@ -165,6 +165,7 @@ public class SignInGUI extends JPanel {
 			if(evt.getSource() == login) {
 				String loginCred = username+password;
 				System.out.println(loginCred);
+				Main.switchView("AccountGUI");
 				//new AccountGUI();
 			}
 			

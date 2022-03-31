@@ -108,12 +108,12 @@ public class CartGUI extends JPanel {
 		//-------------------------------------
 		// add layout, and panels to frame
 		//-------------------------------------
-		setPreferredSize(new Dimension(1100, 600));
+	//	setPreferredSize(new Dimension(1100, 600));
 		add(headerPanel, "North");
 		add(panel1, "Center");
 		add(panel2, "South");
 		//pack();
-		setVisible(true);
+	//	setVisible(true);
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -136,8 +136,5 @@ public class CartGUI extends JPanel {
 			}
 		}
 	}
-	public static void main(String []args) {
-		new CartGUI();
-		
-	}
+
 }

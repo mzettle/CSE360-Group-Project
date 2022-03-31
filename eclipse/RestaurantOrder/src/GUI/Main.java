@@ -38,6 +38,7 @@ public class Main {
 		panel.add(new MenuGUI(), "MenuGUI");
 		panel.add(new SignInGUI(), "SignInGUI");
 		panel.add(new CartGUI(), "CartGUI");
+		panel.add(new AccountGUI(), "AccountGUI");
 		
 		//show MenuGUI first
 		cards.show(panel, "MenuGUI");
