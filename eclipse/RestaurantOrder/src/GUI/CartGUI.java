@@ -29,10 +29,15 @@ public class CartGUI extends JPanel {
 		//panel1.setLayout(new GridLayout(3, 1, 0, 0));
 		panel1.setBackground(gray);
 		
+		
 		panel2 = new JPanel();
-		panel2.setBorder(BorderFactory.createEmptyBorder(20, 220, 20, 220));
+		panel2.setBorder(BorderFactory.createEmptyBorder(25, 200, 70, 200));
 		panel2.setLayout(new GridLayout(1, 2, 10, 10));	
 		panel2.setBackground(gray);
+		//panel2 = new JPanel();
+		//panel2.setBorder(BorderFactory.createEmptyBorder(20, 220, 20, 220));
+	//	panel2.setLayout(new GridLayout(1, 2, 10, 10));	
+		//panel2.setBackground(gray);
 		
 		panel3 = new JPanel();
 		panel3.setBorder(BorderFactory.createEmptyBorder(60, 220, 60, 260));
@@ -80,12 +85,12 @@ public class CartGUI extends JPanel {
 		
 		returnJB = new JButton("Return To Menu");
 		returnJB.setBorderPainted(true);
-		returnJB.setPreferredSize(new Dimension(40, 40));
+		returnJB.setPreferredSize(new Dimension(50, 50));
 		returnJB.addActionListener(new ButtonListener());
 		
 		checkoutJB = new JButton("Continue To Checkout");
 		checkoutJB.setBorderPainted(true);
-		checkoutJB.setPreferredSize(new Dimension(40, 40));
+		checkoutJB.setPreferredSize(new Dimension(50, 50));
 		checkoutJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------

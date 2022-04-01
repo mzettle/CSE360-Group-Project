@@ -33,7 +33,7 @@ public class PaymentInformationGUI extends JPanel {
 		panel1.setBackground(gray);
 		
 		panel2 = new JPanel();
-		panel2.setBorder(BorderFactory.createEmptyBorder(20, 220, 20, 220));
+		panel2.setBorder(BorderFactory.createEmptyBorder(25, 200, 70, 200));
 		panel2.setLayout(new GridLayout(1, 2, 10, 10));	
 		panel2.setBackground(gray);
 		
@@ -173,12 +173,12 @@ public class PaymentInformationGUI extends JPanel {
 		
 		saveJB = new JButton("Save Payment");
 		saveJB.setBorderPainted(true);
-		saveJB.setPreferredSize(new Dimension(40, 40));
+		saveJB.setPreferredSize(new Dimension(50, 50));
 		//	editContactJB.addActionListener(new ButtonListener());
 		
 		backJB = new JButton("Back");
 		backJB.setBorderPainted(true);
-		backJB.setPreferredSize(new Dimension(40, 40));
+		backJB.setPreferredSize(new Dimension(50, 50));
 		backJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------

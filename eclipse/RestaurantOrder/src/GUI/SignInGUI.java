@@ -60,11 +60,13 @@ public class SignInGUI extends JPanel {
 		unTF = new JTextField(SwingConstants.CENTER);
 		unTF.setForeground(Color.GRAY);
 		unTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
+		unTF.setPreferredSize(new Dimension(10, 10));
 		unTF.addActionListener(new TextFieldListener());
 		
 		pwTF = new JTextField(SwingConstants.CENTER);
 		pwTF.setForeground(Color.GRAY);
 		pwTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
+		pwTF.setPreferredSize(new Dimension(10, 10));
 		pwTF.addActionListener(new TextFieldListener());
 		
 		//-------------------------------------

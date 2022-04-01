@@ -102,12 +102,12 @@ public class ContactInformationGUI extends JPanel {
 		
 		updateJB = new JButton("Update Profile");
 		updateJB.setBorderPainted(true);
-		updateJB.setPreferredSize(new Dimension(40, 40));
+		updateJB.setPreferredSize(new Dimension(50, 50));
 		//	editContactJB.addActionListener(new ButtonListener());
 		
 		backJB = new JButton("Back");
 		backJB.setBorderPainted(true);
-		backJB.setPreferredSize(new Dimension(40, 40));
+		backJB.setPreferredSize(new Dimension(50, 50));
 		backJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------
