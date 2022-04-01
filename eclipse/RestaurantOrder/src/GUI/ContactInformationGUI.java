@@ -26,18 +26,18 @@ public class ContactInformationGUI extends JPanel {
 		
 		panel1 = new JPanel();
 		panel1.setBorder(BorderFactory.createEmptyBorder(60, 220, 60, 260));
-		panel1.setLayout(new GridLayout(4, 2, 40, 40));
+		panel1.setLayout(new GridLayout(6, 2, 40, 40));
 		panel1.setBackground(gray);
 		
 		panel2 = new JPanel();
-		panel2.setBorder(BorderFactory.createEmptyBorder(20, 220, 20, 220));
+		panel2.setBorder(BorderFactory.createEmptyBorder(25, 200, 70, 200));
 		panel2.setLayout(new GridLayout(1, 2, 10, 10));	
 		panel2.setBackground(gray);
 		
 		//-------------------------------------
 		// JLabel
 		//-------------------------------------
-		headerJL = new JLabel("Account Information", SwingConstants.CENTER);
+		headerJL = new JLabel("Contact Information", SwingConstants.CENTER);
 		headerJL.setForeground(Color.BLACK);
 		headerJL.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 		headerJL.setPreferredSize(new Dimension(5,5));
@@ -117,6 +117,9 @@ public class ContactInformationGUI extends JPanel {
 		headerPanel.add(home);
 		headerPanel.add(loginHeader);
 		headerPanel.add(cart);
+		
+		panel1.add(headerJL);
+		panel1.add(new JLabel());
 		
 		panel1.add(fnameJL);
 		panel1.add(fnameTF);
