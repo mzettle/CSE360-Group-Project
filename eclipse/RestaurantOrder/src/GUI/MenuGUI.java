@@ -240,11 +240,15 @@ public class MenuGUI extends JPanel {
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
+			
+			//used for debug purposes:
 			if(event.getSource() == home) {
 				for(int i=0; i<Main.menu.shoppingCart.size(); i++) {
 					System.out.println(Main.menu.shoppingCart.get(i).getName());
 				}
 			}
+			
+			//Navigation buttons
 			if(event.getSource() == login) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 		}

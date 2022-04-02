@@ -36,21 +36,21 @@ public class MenuItemGUI extends JDialog  {
 							itemDesc = Main.menu.entreeArray.get(index).getDesc();
 							itemPic = Main.menu.entreeArray.get(index).getPicPath();
 							itemPrice = Main.menu.entreeArray.get(index).getPrice();
-							item = Main.menu.appetizerArray.get(index);
+							item = Main.menu.entreeArray.get(index);
 							break;
 							
 		case "dessert":		itemName = Main.menu.dessertArray.get(index).getName();
 							itemDesc = Main.menu.dessertArray.get(index).getDesc();
 							itemPic = Main.menu.dessertArray.get(index).getPicPath();
 							itemPrice = Main.menu.dessertArray.get(index).getPrice();
-							item = Main.menu.appetizerArray.get(index);
+							item = Main.menu.dessertArray.get(index);
 							break;
 							
 		case "drink":		itemName = Main.menu.drinkArray.get(index).getName();
 							itemDesc = Main.menu.drinkArray.get(index).getDesc();
 							itemPic = Main.menu.drinkArray.get(index).getPicPath();
 							itemPrice = Main.menu.drinkArray.get(index).getPrice();
-							item = Main.menu.appetizerArray.get(index);
+							item = Main.menu.drinkArray.get(index);
 							break;
 							
 		default:			return;

@@ -6,9 +6,9 @@ public class Customer extends Account{
 	private ContactInfo contactInfo;
 	private PaymentInfo paymentInfo;
 	
-	public Customer() {
-		this.setUsername("");
-		this.setPassword("");
+	public Customer(String username, String password) {
+		this.setUsername(username);
+		this.setPassword(password);
 	}
 	
 	public boolean verifyPass(String input) {

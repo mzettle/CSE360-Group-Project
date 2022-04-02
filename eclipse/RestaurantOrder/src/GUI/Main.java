@@ -4,7 +4,6 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.io.File;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -12,7 +11,8 @@ import data.MenuList;
 
 public class Main {
 	
-	public static MenuList menu = new MenuList();
+	public static MenuList menu;
+	public static boolean refresh = true;
 	
 	private static JFrame frame;
 	private static JPanel panel; //panel for cardlayout
@@ -22,6 +22,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		menu = new MenuList();
 		menu.readFile(new File("test.tsv"));
 
 		//initialize main window frame
@@ -51,6 +52,7 @@ public class Main {
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);
+		refresh = false;
 	}
 	
 	
