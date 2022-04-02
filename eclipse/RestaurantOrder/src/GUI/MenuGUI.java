@@ -37,7 +37,7 @@ public class MenuGUI extends JPanel {
 	
 	public MenuGUI() {
 		
-		Dimension menuItemSize = new Dimension(200,130);
+		Dimension menuItemSize = new Dimension(200,130), categoryDim = new Dimension(1000,1000);
 		
 		
 		headerPanel = new JPanel();
@@ -47,13 +47,14 @@ public class MenuGUI extends JPanel {
 		
 		panel = new JPanel();
 		panel.setLayout(new GridLayout(5,1));
-		panel.setPreferredSize(new Dimension(0,800));
+		panel.setPreferredSize(new Dimension(0,1000));
 		panel.setBackground(Color.WHITE);
 		
 		appetizerPanel = new JPanel();
 		appetizerPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 1, 20));
 		appetizerPanel.setLayout(new BorderLayout());
 		appetizerPanel.setBackground(Color.LIGHT_GRAY);
+		appetizerPanel.setPreferredSize(categoryDim);
 		
 		entreePanel = new JPanel();
 		entreePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 1, 20));
@@ -78,6 +79,9 @@ public class MenuGUI extends JPanel {
 		
 		appetizerItems = new JPanel();
 		entreeItems = new JPanel();
+		drinkItems = new JPanel();
+		dessertItems = new JPanel();
+		
 		
 		//-------------------------------------
 		// JTextField
@@ -108,7 +112,7 @@ public class MenuGUI extends JPanel {
 		drinkButtons = new ArrayList<JButton>();
 		
 		for(int i = 0; i<Main.menu.appetizerArray.size(); i++) {
-			appetizerButtons.add(new JButton(new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath())));
+			appetizerButtons.add(new JButton(Main.menu.appetizerArray.get(i).getName(), new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath())));
 			appetizerButtons.get(i).setPreferredSize(menuItemSize);
 			appetizerButtons.get(i).addActionListener(new ItemListener());
 			appetizerButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -184,11 +188,11 @@ public class MenuGUI extends JPanel {
 		}
 		
 		for(int i=0; i<drinkButtons.size(); i++) {
-			entreeItems.add(drinkButtons.get(i));
+			drinkItems.add(drinkButtons.get(i));
 		}
 
 		for(int i=0; i<dessertButtons.size(); i++) {
-			entreeItems.add(dessertButtons.get(i));
+			dessertItems.add(dessertButtons.get(i));
 		}
 		
 		//-------------------------------------
@@ -236,6 +240,11 @@ public class MenuGUI extends JPanel {
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == home) {
+				for(int i=0; i<Main.menu.shoppingCart.size(); i++) {
+					System.out.println(Main.menu.shoppingCart.get(i).getName());
+				}
+			}
 			if(event.getSource() == login) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 		}
@@ -280,11 +289,11 @@ public class MenuGUI extends JPanel {
 					return;
 				}
 				System.out.println(itemTypeString + " Item " + index + " Clicked");
-				JDialog itemWindow = new MenuItemGUI(itemTypeString, index);
-				itemWindow.pack();
+				Main.itemWindow = new MenuItemGUI(itemTypeString, index);
+				Main.itemWindow.pack();
 				//frame.setEnabled(false);
-				itemWindow.setVisible(true);
-				while(itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
+				Main.itemWindow.setVisible(true);
+				while(Main.itemWindow.isVisible()) {} //wait until itemWindow closes to re-enable
 				//frame.setEnabled(true);
 				//frame.toFront();
 				

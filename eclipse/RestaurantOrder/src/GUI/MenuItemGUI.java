@@ -1,13 +1,25 @@
 package GUI;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import data.MenuList;
 
 import javax.swing.*;
 	
 public class MenuItemGUI extends JDialog  {
 	
+	JPanel headerPanel, panel, panel2;
+	JLabel headerJL, picLabel, descriptionJL, ingredientsJL, condimentsJL, qtyJL;
+	JButton addToCartJB;
+	JTextArea descriptionTA,ingredientsTA;
+	JSpinner qtyJS;
+	JCheckBox condiment1CB, condiment2CB;
+	data.MenuItem item;
+	
 	public MenuItemGUI(String category, int index) {
+		
+		
 		
 		String itemName = "", itemDesc = "", itemPic = "";
 		double itemPrice = -1.0;
@@ -17,27 +29,35 @@ public class MenuItemGUI extends JDialog  {
 							itemDesc = Main.menu.appetizerArray.get(index).getDesc();
 							itemPic = Main.menu.appetizerArray.get(index).getPicPath();
 							itemPrice = Main.menu.appetizerArray.get(index).getPrice();
+							item = Main.menu.appetizerArray.get(index);
 							break;
+							
 		case "entree":		itemName = Main.menu.entreeArray.get(index).getName();
 							itemDesc = Main.menu.entreeArray.get(index).getDesc();
 							itemPic = Main.menu.entreeArray.get(index).getPicPath();
 							itemPrice = Main.menu.entreeArray.get(index).getPrice();
+							item = Main.menu.appetizerArray.get(index);
 							break;
-		case "dessert":
+							
+		case "dessert":		itemName = Main.menu.dessertArray.get(index).getName();
+							itemDesc = Main.menu.dessertArray.get(index).getDesc();
+							itemPic = Main.menu.dessertArray.get(index).getPicPath();
+							itemPrice = Main.menu.dessertArray.get(index).getPrice();
+							item = Main.menu.appetizerArray.get(index);
 							break;
-		case "drink":		
+							
+		case "drink":		itemName = Main.menu.drinkArray.get(index).getName();
+							itemDesc = Main.menu.drinkArray.get(index).getDesc();
+							itemPic = Main.menu.drinkArray.get(index).getPicPath();
+							itemPrice = Main.menu.drinkArray.get(index).getPrice();
+							item = Main.menu.appetizerArray.get(index);
 							break;
 							
 		default:			return;
 		
 		}
 		
-		JPanel headerPanel, panel, panel2;
-		JLabel headerJL, picLabel, descriptionJL, ingredientsJL, condimentsJL, qtyJL;
-		JButton addToCartJB;
-		JTextArea descriptionTA,ingredientsTA;
-		JSpinner qtyJS;
-		JCheckBox condiment1CB, condiment2CB;
+		
 		
 		
 		
@@ -108,11 +128,12 @@ public class MenuItemGUI extends JDialog  {
 		//-------------------------------------
 		addToCartJB = new JButton("Add to Cart");
 		addToCartJB.setBorderPainted(true);
+		addToCartJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------
 		// JButton
 		//-------------------------------------
-		qtyJS = new JSpinner();
+		qtyJS = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
 		
 		//-------------------------------------
 		// JCheckBox
@@ -142,12 +163,23 @@ public class MenuItemGUI extends JDialog  {
 		// add to frame				
 		//-------------------------------------
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setPreferredSize(new Dimension(500, 1000));
+		setPreferredSize(new Dimension(500, 800));
 		add(headerPanel, "North");
 		add(panel, "Center");
 		add(panel2, "South");
 		setModal(true);
 		setName("Add Item to Cart");
 	}
+	
+	private class ButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == addToCartJB) {
+				int qty = (int) qtyJS.getValue();
+				Main.menu.addToCart(item, qty);
+				dispose();
+			}
+		}
+	}
+	
 }
 

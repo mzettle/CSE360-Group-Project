@@ -17,6 +17,7 @@ public class Main {
 	private static JFrame frame;
 	private static JPanel panel; //panel for cardlayout
 	private static CardLayout cards; //cardlayout manager
+	public static MenuItemGUI itemWindow;
 	
 	
 	public static void main(String[] args) {
