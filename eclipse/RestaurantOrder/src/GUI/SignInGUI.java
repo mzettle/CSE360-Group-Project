@@ -125,12 +125,12 @@ public class SignInGUI extends JPanel {
 	
 	private class TextFieldListener implements ActionListener{
 		@Override
-		public void actionPerformed(ActionEvent evt) {
-			if(evt.getSource() == unTF) {
+		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == unTF) {
 			   username = unTF.getText();
 			   System.out.println(username);
 			}
-			else if(evt.getSource() == pwTF) {
+			else if(event.getSource() == pwTF) {
 			   password = pwTF.getText();
 			   System.out.println(password);
 			}
@@ -144,9 +144,8 @@ public class SignInGUI extends JPanel {
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
-			if(event.getSource() == login)Main.switchView("AccountGUI");
-			
-			//if(event.getSource() == register)Main.switchView("");
+			if(event.getSource() == login) Main.switchView("AccountGUI");
+			if(event.getSource() == register)Main.switchView("RegisterGUI");
 		}
 	}
 

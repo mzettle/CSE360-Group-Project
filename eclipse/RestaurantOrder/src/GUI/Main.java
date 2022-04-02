@@ -42,6 +42,7 @@ public class Main {
 		panel.add(new AccountGUI(), "AccountGUI");
 		panel.add(new ContactInformationGUI(), "ContactInformationGUI");
 		panel.add(new PaymentInformationGUI(), "PaymentInformationGUI");
+		panel.add(new RegisterGUI(), "RegisterGUI");
 		
 		//show MenuGUI first
 		cards.show(panel, "MenuGUI");
