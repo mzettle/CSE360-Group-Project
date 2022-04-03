@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.*;
+import static javax.swing.JOptionPane.showMessageDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -17,6 +18,8 @@ public class CartGUI extends JPanel {
 	protected JButton loginHeader, home, cart, returnJB, checkoutJB;
 	
 	protected JTable cartItems;
+	DefaultTableModel tableModel;
+	
 	protected String columns[] = {"Item", "Qty", "Select"};
 	
 	public CartGUI() {
@@ -102,7 +105,7 @@ public class CartGUI extends JPanel {
 		//JTable
 		//-------------------------------------
 		
-		DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
+		tableModel = new DefaultTableModel(columns, 0);
 		cartItems = new JTable(tableModel);
 		
 		//-------------------------------------
@@ -131,11 +134,6 @@ public class CartGUI extends JPanel {
 		add(panel1, "Center");
 		add(panel2, "South");
 		
-		//REMOVE
-		Object[] data = {"Test", "two", new JCheckBox("check")};
-		tableModel.addRow(data);
-	//	cartItems.setTableHeader(new JTableHeader(columns));
-		
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -162,7 +160,14 @@ public class CartGUI extends JPanel {
 	
 	public void updateCart() {
 		if(Main.menu.shoppingCart.isEmpty()) {
-			
+			showMessageDialog(null, "Your cart is empty! Please add some items.");
+			Main.switchView("MenuGUI");
+		}
+		else {
+			for(int i=0; i<Main.menu.shoppingCart.size(); i++){
+				Object[] data = {Main.menu.shoppingCart.get(i).getName(), Main.menu.shoppingCart.get(i).getQuantity(), new JCheckBox("check")};
+				tableModel.addRow(data);
+			}
 		}
 	}
 

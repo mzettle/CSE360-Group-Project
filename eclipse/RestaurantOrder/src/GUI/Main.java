@@ -70,8 +70,8 @@ public class Main {
 	
 	//function to easily change views using each interface's CardLayout name
 	public static void switchView(String name) {
-		if(name == "CartGUI") cartGUI.updateCart();
 		cards.show(panel,  name);
+		if(name == "CartGUI") cartGUI.updateCart();
 	}
 
 }
