@@ -7,12 +7,17 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class CartGUI extends JPanel {
 	
 	protected JPanel headerPanel, panel1, panel2, panel3;
 	protected JLabel headerJL, reviewJL, subtotalJL;
 	protected JButton loginHeader, home, cart, returnJB, checkoutJB;
+	
+	protected JTable cartItems;
+	protected String columns[] = {"Item", "Qty", "Select"};
 	
 	public CartGUI() {
 		
@@ -94,15 +99,24 @@ public class CartGUI extends JPanel {
 		checkoutJB.addActionListener(new ButtonListener());
 		
 		//-------------------------------------
+		//JTable
+		//-------------------------------------
+		
+		DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
+		cartItems = new JTable(tableModel);
+		
+		//-------------------------------------
 		// add to panels				
 		//-------------------------------------
+		
 		headerPanel.add(home);
 		headerPanel.add(loginHeader);
 		headerPanel.add(cart);
 		
 		panel1.add(reviewJL, "North");
-		JScrollPane scrollPane = new JScrollPane(panel3);
-		panel1.add(scrollPane);
+		//JScrollPane scrollPane = new JScrollPane(panel3);
+	//	panel1.add(scrollPane);
+		panel1.add(new JScrollPane(cartItems), "Center");
 		panel1.add(subtotalJL, "South");
 		
 		panel2.add(returnJB);
@@ -116,6 +130,12 @@ public class CartGUI extends JPanel {
 		add(headerPanel, "North");
 		add(panel1, "Center");
 		add(panel2, "South");
+		
+		//REMOVE
+		Object[] data = {"Test", "two", new JCheckBox("check")};
+		tableModel.addRow(data);
+	//	cartItems.setTableHeader(new JTableHeader(columns));
+		
 	}
 	
 	private class TextFieldListener implements ActionListener{
@@ -130,7 +150,19 @@ public class CartGUI extends JPanel {
 			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home || event.getSource() == returnJB)Main.switchView("MenuGUI");
-			//if(event.getSource() == checkoutJB) Main.switchView(TOOL_TIP_TEXT_KEY);
+			
+			//for debug
+			if(event.getSource() == checkoutJB) {
+				System.out.println("This should delete cart item #: " + cartItems.getSelectedRow());
+			}
+		}
+		
+		
+	}
+	
+	public void updateCart() {
+		if(Main.menu.shoppingCart.isEmpty()) {
+			
 		}
 	}
 

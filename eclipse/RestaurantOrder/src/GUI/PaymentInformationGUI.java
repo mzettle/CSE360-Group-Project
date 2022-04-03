@@ -8,6 +8,8 @@ import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
+import data.Customer;
+
 public class PaymentInformationGUI extends JPanel {
 	
 	protected JPanel headerPanel, panel1, panel2;
@@ -17,6 +19,16 @@ public class PaymentInformationGUI extends JPanel {
 	protected JTextField fnameTF, lnameTF, addressTF, cityTF, zipTF, 
 						cardNameTF, cardNumTF, cvvTF;
 	protected JComboBox stateCB, expMCB, expYCB;
+	
+	private String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", 
+			"California", "Colorado", "Connecticut", "District of Columbia", "Delaware", 
+			"Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", 
+			"Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", 
+			"Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", 
+			"Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", 
+			"Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", 
+			"South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", 
+			"Washington", "Wisconsin", "West Virginia", "Wyoming"};
 	
 	public PaymentInformationGUI() {
 		
@@ -133,15 +145,7 @@ public class PaymentInformationGUI extends JPanel {
 		//-------------------------------------
 		// Combo Box
 		//-------------------------------------
-		String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", 
-				"California", "Colorado", "Connecticut", "District of Columbia", "Delaware", 
-				"Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", 
-				"Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", 
-				"Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", 
-				"Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", 
-				"Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", 
-				"South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", 
-				"Washington", "Wisconsin", "West Virginia", "Wyoming"};
+		
 		stateCB = new JComboBox(states);
 		stateCB.setEditable(false);
 		
@@ -246,5 +250,21 @@ public class PaymentInformationGUI extends JPanel {
 			
 			if(event.getSource() == backJB)Main.switchView("AccountGUI");
 		}
+	}
+	
+	public void updateInfo(Customer cust) {
+		fnameTF.setText(cust.paymentInfo.firstName);
+		lnameTF.setText(cust.paymentInfo.lastName);
+		addressTF.setText(cust.paymentInfo.address);
+		cityTF.setText(cust.paymentInfo.city);
+		
+		for(int i=0; i<states.length; i++) {
+			if(states[i].equals(cust.paymentInfo.state)) {
+				stateCB.setSelectedIndex(i);
+				break;
+			}
+		}
+		
+		zipTF.setText(cust.paymentInfo.postalCode);
 	}
 }

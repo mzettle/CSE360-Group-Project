@@ -3,8 +3,8 @@ package data;
 public class Customer extends Account{
 	// Change ContactInfo and PayInfo to their respective classes
 	// after you have written the code for the classes. 
-	private ContactInfo contactInfo;
-	private PaymentInfo paymentInfo;
+	public ContactInfo contactInfo;
+	public PaymentInfo paymentInfo;
 	
 	public Customer(String username, String password) {
 		contactInfo = new ContactInfo();
@@ -15,7 +15,7 @@ public class Customer extends Account{
 	}
 
 
-	public void setContactInfo(String fName, String lName, int phoneNum, String email){
+	public void setContactInfo(String fName, String lName, String phoneNum, String email){
 		this.contactInfo.firstName = fName;
 		this.contactInfo.lastName = lName;
 		this.contactInfo.phoneNumber = phoneNum;

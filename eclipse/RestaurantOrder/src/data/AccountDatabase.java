@@ -54,7 +54,7 @@ public class AccountDatabase {
 				switch(row[0]){
 				case "user" :
 					users.add(new Customer(row[1], row[2]));
-					((Customer) users.get(entry)).setContactInfo(row[3], row[4], Integer.parseInt(row[5]), row[6]);
+					((Customer) users.get(entry)).setContactInfo(row[3], row[4], row[5], row[6]);
 					((Customer) users.get(entry)).setPaymentInfo(row[7], row[8], row[9], Integer.parseInt(row[10]), Integer.parseInt(row[11]), Integer.parseInt(row[12]), row[13], row[14], row[15], row[16], row[17]);
 					break;
 				case "admin" : 

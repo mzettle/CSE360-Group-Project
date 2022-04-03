@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import data.Account;
+import data.Customer;
+
 public class AccountGUI extends JPanel {
 
 	protected JFrame frame = new JFrame("Your Account");
@@ -17,7 +20,9 @@ public class AccountGUI extends JPanel {
 	protected String contact, payment;
 	protected JTextArea contactTA, paymentTA;
 	
-	public AccountGUI(String username) {
+	protected Customer cust;
+	
+	public AccountGUI() {
 		Color gray = new Color(222, 222,  222);
 		
 		/*headerPanel = new JPanel();
@@ -88,13 +93,13 @@ public class AccountGUI extends JPanel {
 		*/
 		
 		headerPanel = new JPanel();
-		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		//headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		headerPanel.setLayout(new GridLayout(1, 4));
 		headerPanel.setBackground(Color.LIGHT_GRAY);
 
 		panel1 = new JPanel();
-		panel1.setBorder(BorderFactory.createEmptyBorder(40, 220, 80, 180));
-		panel1.setLayout(new GridLayout(5, 1, 40, 40));
+		panel1.setBorder(BorderFactory.createEmptyBorder(20, 220, 10, 180));
+		panel1.setLayout(new GridLayout(5, 1, 10, 20));
 		panel1.setBackground(gray);
 
 		panel2 = new JPanel();
@@ -124,7 +129,7 @@ public class AccountGUI extends JPanel {
 		contact = "\tfname\n\tlastname\n\tphone\n\temail";
 		payment = "\tccn\n\tfname\n\tlname";
 
-		contactTA = new JTextArea(4, 4);
+		contactTA = new JTextArea(100, 100);
 		contactTA.setEditable(false);
 		contactTA.setText(contact);
 		contactTA.setBackground(gray);
@@ -186,7 +191,8 @@ public class AccountGUI extends JPanel {
 		// add layout, and panels to frame
 		//-------------------------------------
 		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(1100, 600));
+	//	setPreferredSize(new Dimension(1100, 600));
+		
 		add(headerPanel, "North");
 		add(panel1, "Center");
 		add(panel2, "South");
@@ -198,8 +204,24 @@ public class AccountGUI extends JPanel {
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
-			if(event.getSource() == contactInfo)Main.switchView("ContactInformationGUI");
-			if(event.getSource() == paymentInfo)Main.switchView("PaymentInformationGUI");		
+			if(event.getSource() == contactInfo) {
+				Main.contactInfoGUI.updateInfo(cust);
+				Main.switchView("ContactInformationGUI");
+			}
+			if(event.getSource() == paymentInfo) {
+				Main.paymentInfoGUI.updateInfo(cust);
+				Main.switchView("PaymentInformationGUI");
+			}
 		}
 	}	
+	
+	public void UpdateInfo(Customer cust) {
+		this.cust = cust;
+		contactTA.setText("Name: " + cust.contactInfo.firstName + " " + cust.contactInfo.lastName +
+				"\nPhone: " + cust.contactInfo.phoneNumber + "\nEmail: " + cust.contactInfo.emailAddress);
+		paymentTA.setText("Name: " + cust.paymentInfo.firstName + " " + cust.paymentInfo.lastName +
+				"\nLast 4 digits of Credit Card: " + cust.paymentInfo.ccNumber.substring(cust.paymentInfo.ccNumber.length() - 4) +
+				" Expires: " + cust.paymentInfo.expMonth + "/" + cust.paymentInfo.expYear + 
+				"\n Address: " + cust.paymentInfo.address + "\n\t" + cust.paymentInfo.city + ", " + cust.paymentInfo.state + " " + cust.paymentInfo.postalCode + " " + cust.paymentInfo.country);
+	}
 }

@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import data.Account;
+import data.Customer;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 
 //import GUI.LoginGUI.ButtonListener;
@@ -146,11 +150,15 @@ public class SignInGUI extends JPanel {
 			if(event.getSource() == register)Main.switchView("RegisterGUI");
 			
 			if(event.getSource() == login) {
-				if(Main.accounts.lookUpUsername(unTF.getText()) != null) {
-					showMessageDialog(null, "Account found!");
+				
+				Account user = Main.accounts.lookUpUsername(unTF.getText());
+				
+				if(user != null) {
+					Main.accountGUI.UpdateInfo(((Customer) user));
+					Main.switchView("AccountGUI");
 				}
 				else {
-					showMessageDialog(null, "No Account found :(");
+					showMessageDialog(null, "Invalid Username!");
 				}
 			}
 		}

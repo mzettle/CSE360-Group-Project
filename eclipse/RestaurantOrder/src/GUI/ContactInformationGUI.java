@@ -8,6 +8,8 @@ import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
+import data.Customer;
+
 public class ContactInformationGUI extends JPanel {
 
 	protected JPanel headerPanel, panel1, panel2;
@@ -161,6 +163,13 @@ public class ContactInformationGUI extends JPanel {
 			
 			if(event.getSource() == backJB) Main.switchView("AccountGUI");
 		}
+	}
+	
+	public void updateInfo(Customer cust) {
+		fnameTF.setText(cust.contactInfo.firstName);
+		lnameTF.setText(cust.contactInfo.lastName);
+		phoneTF.setText(cust.contactInfo.phoneNumber);
+		emailTF.setText(cust.contactInfo.emailAddress);
 	}
 	
 }

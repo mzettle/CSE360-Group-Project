@@ -20,7 +20,10 @@ public class Main {
 	private static JPanel panel; //panel for cardlayout
 	private static CardLayout cards; //cardlayout manager
 	public static MenuItemGUI itemWindow;
-	
+	public static AccountGUI accountGUI;
+	public static PaymentInformationGUI paymentInfoGUI;
+	public static ContactInformationGUI contactInfoGUI;
+	private static CartGUI cartGUI;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -44,10 +47,14 @@ public class Main {
 		//add all gui interfaces to the cardlayout
 		panel.add(new MenuGUI(), "MenuGUI");
 		panel.add(new SignInGUI(), "SignInGUI");
-		panel.add(new CartGUI(), "CartGUI");
-		panel.add(new AccountGUI(""), "AccountGUI");
-		panel.add(new ContactInformationGUI(), "ContactInformationGUI");
-		panel.add(new PaymentInformationGUI(), "PaymentInformationGUI");
+		cartGUI = new CartGUI();
+		panel.add(cartGUI, "CartGUI");
+		accountGUI = new AccountGUI();
+		panel.add(accountGUI, "AccountGUI");
+		contactInfoGUI = new ContactInformationGUI();
+		panel.add(contactInfoGUI, "ContactInformationGUI");
+		paymentInfoGUI = new PaymentInformationGUI();
+		panel.add(paymentInfoGUI, "PaymentInformationGUI");
 		panel.add(new RegisterGUI(), "RegisterGUI");
 		
 		//show MenuGUI first
@@ -63,6 +70,7 @@ public class Main {
 	
 	//function to easily change views using each interface's CardLayout name
 	public static void switchView(String name) {
+		if(name == "CartGUI") cartGUI.updateCart();
 		cards.show(panel,  name);
 	}
 
