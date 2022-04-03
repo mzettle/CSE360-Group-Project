@@ -3,11 +3,9 @@ package GUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.*;
 
 import javax.swing.*;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 //import GUI.LoginGUI.ButtonListener;
 
@@ -144,8 +142,17 @@ public class SignInGUI extends JPanel {
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
-			if(event.getSource() == login) Main.switchView("AccountGUI");
+		//	if(event.getSource() == login) Main.switchView("AccountGUI");
 			if(event.getSource() == register)Main.switchView("RegisterGUI");
+			
+			if(event.getSource() == login) {
+				if(Main.accounts.lookUpUsername(unTF.getText()) != null) {
+					showMessageDialog(null, "Account found!");
+				}
+				else {
+					showMessageDialog(null, "No Account found :(");
+				}
+			}
 		}
 	}
 

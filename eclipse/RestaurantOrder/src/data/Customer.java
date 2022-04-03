@@ -7,20 +7,13 @@ public class Customer extends Account{
 	private PaymentInfo paymentInfo;
 	
 	public Customer(String username, String password) {
+		contactInfo = new ContactInfo();
+		paymentInfo = new PaymentInfo();
+		
 		this.setUsername(username);
 		this.setPassword(password);
 	}
-	
-	public boolean verifyPass(String input) {
-		// String.equals(String) condition that they are not passing
-		// a NULL value. 
-		if(input != null) {
-			if(this.getPassword().equals(input)) {
-				return true;
-			}
-		}
-		return false;
-	}
+
 
 	public void setContactInfo(String fName, String lName, int phoneNum, String email){
 		this.contactInfo.firstName = fName;

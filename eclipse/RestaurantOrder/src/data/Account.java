@@ -4,10 +4,19 @@ package data;
 public abstract class Account {
 	// changed username status from public->private; use getters
 	// More reliability and control
-	private String username;
-	private String password;
+	public String username; //temp public
+	public String password;
 	
-	public abstract boolean verifyPass(String input);
+	public boolean verifyPass(String input) {
+		// String.equals(String) condition that they are not passing
+		// a NULL value. 
+		if(input != null) {
+			if(this.getPassword().equals(input)) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	// created protected getters/setters for Account Information
 	protected String getUsername() {

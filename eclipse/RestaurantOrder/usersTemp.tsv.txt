@@ -1,0 +1,3 @@
+admin	matt	password															
+user	username	password	contactFirstName	contactLastName	contactPhone	contactEmail	billFirstName	billLastName	ccNum	expMonth	expYear	carCSV	billingAddr	billingCity	billingState	billingCountry	BillingZip
+somebody	pass	asdf	asdf	asdf	1	asdf	asdf	asdf	1	1	1	1	asdf	asdf	asdf	sadf	1

@@ -17,8 +17,8 @@ public class AccountGUI extends JPanel {
 	protected String contact, payment;
 	protected JTextArea contactTA, paymentTA;
 	
-	public AccountGUI() {
-		Color  gray   = new Color(222, 222,  222);
+	public AccountGUI(String username) {
+		Color gray = new Color(222, 222,  222);
 		
 		/*headerPanel = new JPanel();
 		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));

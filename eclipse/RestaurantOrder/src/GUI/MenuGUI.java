@@ -243,8 +243,9 @@ public class MenuGUI extends JPanel {
 			
 			//used for debug purposes:
 			if(event.getSource() == home) {
-				for(int i=0; i<Main.menu.shoppingCart.size(); i++) {
-					System.out.println(Main.menu.shoppingCart.get(i).getName());
+				System.out.println("accounts in list: " + Main.accounts.users.size());
+				for(int i=0; i<Main.accounts.users.size(); i++) {
+					System.out.println(Main.accounts.users.get(i).username);
 				}
 			}
 			

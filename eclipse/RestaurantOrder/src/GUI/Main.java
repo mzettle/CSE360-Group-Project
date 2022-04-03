@@ -7,11 +7,13 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import data.AccountDatabase;
 import data.MenuList;
 
 public class Main {
 	
 	public static MenuList menu;
+	public static AccountDatabase accounts;
 	public static boolean refresh = true;
 	
 	private static JFrame frame;
@@ -23,8 +25,11 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		menu = new MenuList();
+		accounts = new AccountDatabase();
+		
 		menu.readFile(new File("test.tsv"));
-
+		accounts.readFile(new File("users.tsv"));
+		
 		//initialize main window frame
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,7 +45,7 @@ public class Main {
 		panel.add(new MenuGUI(), "MenuGUI");
 		panel.add(new SignInGUI(), "SignInGUI");
 		panel.add(new CartGUI(), "CartGUI");
-		panel.add(new AccountGUI(), "AccountGUI");
+		panel.add(new AccountGUI(""), "AccountGUI");
 		panel.add(new ContactInformationGUI(), "ContactInformationGUI");
 		panel.add(new PaymentInformationGUI(), "PaymentInformationGUI");
 		panel.add(new RegisterGUI(), "RegisterGUI");
