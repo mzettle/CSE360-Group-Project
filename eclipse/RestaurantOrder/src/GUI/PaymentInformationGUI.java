@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
 
 import javax.swing.*;
 
@@ -280,6 +281,7 @@ public class PaymentInformationGUI extends JPanel {
 					
 					Main.switchView("AccountGUI");
 					Main.accountGUI.UpdateInfo(cust);
+					Main.saveUsers();
 				}
 			}
 		}

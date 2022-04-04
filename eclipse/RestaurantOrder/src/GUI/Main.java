@@ -86,5 +86,9 @@ public class Main {
 		switchView("MenuGUI");
 		showMessageDialog(null, "You have sucessfully signed out!");
 	}
+	
+	public static void saveUsers() {
+		Main.accounts.writeFile(new File("users.tsv"));
+	}
 
 }

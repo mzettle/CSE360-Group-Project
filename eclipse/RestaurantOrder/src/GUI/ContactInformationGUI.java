@@ -168,6 +168,8 @@ public class ContactInformationGUI extends JPanel {
 				
 				Main.switchView("AccountGUI");
 				Main.accountGUI.UpdateInfo(cust);
+				Main.saveUsers();
+				
 				
 			}
 		}

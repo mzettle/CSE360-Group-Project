@@ -1,7 +1,9 @@
 package data;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class AccountDatabase {
@@ -72,6 +74,54 @@ public class AccountDatabase {
 			
 			System.out.println("Accounts imported");
 			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public boolean writeFile(File outputFile) {
+		System.out.println("Saving accounts database");
+		try {
+			
+			BufferedWriter TSVWriter = new BufferedWriter(new FileWriter(outputFile));
+			
+			String line;
+			
+			for(Account acc : users) {
+				line = "";
+				if(acc instanceof Customer) {
+					line += "user\t";
+					line += acc.getUsername() + "\t";
+					line += acc.getPassword() + "\t";
+					line += ((Customer) acc).contactInfo.firstName + "\t";
+					line += ((Customer) acc).contactInfo.lastName + "\t";
+					line += ((Customer) acc).contactInfo.phoneNumber + "\t";
+					line += ((Customer) acc).contactInfo.emailAddress + "\t";
+					line += ((Customer) acc).paymentInfo.firstName + "\t";
+					line += ((Customer) acc).paymentInfo.lastName + "\t";
+					line += ((Customer) acc).paymentInfo.ccNumber + "\t";
+					line += Integer.toString(((Customer) acc).paymentInfo.expMonth) + "\t";
+					line += Integer.toString(((Customer) acc).paymentInfo.expYear) + "\t";
+					line += Integer.toString(((Customer) acc).paymentInfo.ccCSV) + "\t";
+					line += ((Customer) acc).paymentInfo.address + "\t";
+					line += ((Customer) acc).paymentInfo.city + "\t";
+					line += ((Customer) acc).paymentInfo.state + "\t";
+					line += ((Customer) acc).paymentInfo.country + "\t";
+					line += ((Customer) acc).paymentInfo.postalCode + "\t";
+				}
+				else {
+					line += "admin";
+					line += acc.getUsername();
+					line += acc.getPassword();
+				}
+				TSVWriter.write(line);
+				TSVWriter.newLine();
+			}
+			
+			TSVWriter.close();
+			return true;
+			
 		} catch (Exception e) {
 			System.out.println(e);
 			return false;
