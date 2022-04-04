@@ -60,6 +60,7 @@ public class Main {
 		paymentInfoGUI = new PaymentInformationGUI();
 		panel.add(paymentInfoGUI, "PaymentInformationGUI");
 		panel.add(new RegisterGUI(), "RegisterGUI");
+		panel.add(new ConfirmationGUI(), "ConfirmationGUI");
 		
 		//show MenuGUI first
 		cards.show(panel, "MenuGUI");
