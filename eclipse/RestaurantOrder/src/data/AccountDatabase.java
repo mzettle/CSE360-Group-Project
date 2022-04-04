@@ -72,7 +72,7 @@ public class AccountDatabase {
 			
 			TSVReader.close();
 			
-			System.out.println("Accounts imported");
+			System.out.println(entry + " Accounts imported");
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);

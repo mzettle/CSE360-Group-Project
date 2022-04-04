@@ -1,12 +1,15 @@
 package GUI;
 
 import java.awt.*;
+import static javax.swing.JOptionPane.showMessageDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener; 
 
 import javax.swing.*;
+
+import data.Customer;
 
 //import GUI.SignInGUI.TextFieldListener;
 
@@ -24,6 +27,22 @@ public class RegisterGUI extends JPanel {
 						cardNameTF, cardNumTF, cvvTF;
 	protected JComboBox stateCB, expMCB, expYCB;
 	public String username,password, firstname, lastname, number, email, fname, lname, address, city, zip, state, expM, expY; 
+	
+	String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", 
+			"California", "Colorado", "Connecticut", "District of Columbia", "Delaware", 
+			"Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", 
+			"Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", 
+			"Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", 
+			"Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", 
+			"Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", 
+			"South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", 
+			"Washington", "Wisconsin", "West Virginia", "Wyoming"};
+	
+	String[] year = {"2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", 
+			"2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", 
+			"2040", "2041"};
+	
+	String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 	
 	public RegisterGUI() {
 		
@@ -210,27 +229,17 @@ public class RegisterGUI extends JPanel {
 		//-------------------------------------
 		// Combo Box
 		//-------------------------------------
-		String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", 
-				"California", "Colorado", "Connecticut", "District of Columbia", "Delaware", 
-				"Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", 
-				"Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", 
-				"Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", 
-				"Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", 
-				"Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", 
-				"South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", 
-				"Washington", "Wisconsin", "West Virginia", "Wyoming"};
+		
 		stateCB = new JComboBox(states);
 		stateCB.setEditable(false);
 		stateCB.addActionListener(new ComboBoxListener());
 		
-		String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+		
 		expMCB = new JComboBox(month);
 		expMCB.setEditable(false);
 		expMCB.addActionListener(new ComboBoxListener());
 		
-		String[] year = {"2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", 
-				"2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", 
-				"2040", "2041"};
+		
 		expYCB = new JComboBox(year);
 		expYCB.setEditable(false);
 		expYCB.addActionListener(new ComboBoxListener());
@@ -361,8 +370,17 @@ public class RegisterGUI extends JPanel {
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
-			if(event.getSource() == saveJB) {
-				
+			if((event.getSource() == saveJB) && (usernameTF.getText() != "") && (passwordTF.getText() != "")) {
+				if(Main.accounts.addUser(usernameTF.getText(), passwordTF.getText())) {
+					
+					((Customer) Main.accounts.users.get(Main.accounts.users.size() - 1)).setContactInfo(firstnameTF.getText(), lastnameTF.getText(), numberTF.getText(), emailTF.getText());
+					((Customer) Main.accounts.users.get(Main.accounts.users.size() - 1)).setPaymentInfo(fnameTF.getText(), lnameTF.getText(), cardNumTF.getText(), Integer.parseInt(month[expMCB.getSelectedIndex()]), Integer.parseInt(year[expYCB.getSelectedIndex()]), Integer.parseInt(cvvTF.getText()), addressTF.getText(), cityTF.getText(), states[stateCB.getSelectedIndex()], "United States", zipTF.getText());
+					
+					Main.cust = (Customer) Main.accounts.users.get(Main.accounts.users.size() - 1);
+					Main.accountGUI.UpdateInfo(((Customer) Main.cust));
+					Main.switchView("AccountGUI");
+				}
+				else showMessageDialog(null, "Username taken");
 			}
 			
 		}

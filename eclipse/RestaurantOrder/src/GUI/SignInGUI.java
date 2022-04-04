@@ -10,6 +10,8 @@ import data.Account;
 import data.Customer;
 
 import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.JOptionPane.showConfirmDialog;
+import javax.swing.JOptionPane;
 
 //import GUI.LoginGUI.ButtonListener;
 
@@ -171,7 +173,7 @@ public class SignInGUI extends JPanel {
 			}
 		}
 		else {
-			showMessageDialog(null, "Invalid Username!");
+			showMessageDialog(null, "Invalid Username! Click register to make an account with this username/password");
 		}
 	}
 	
