@@ -164,7 +164,8 @@ public class SignInGUI extends JPanel {
 					Main.switchView("AccountGUI");
 				}
 				else {
-					showMessageDialog(null, "This is an admin account!");
+					Main.switchView("AdminGUI");
+					Main.adminGUI.updateGUI();
 				}
 			}
 			else {
