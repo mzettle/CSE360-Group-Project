@@ -157,8 +157,8 @@ public class MenuItemGUI extends JDialog  {
 		panel.add(picLabel);
 		panel.add(descriptionJL);
 		panel.add(descriptionTA);
-		panel.add(ingredientsJL);
-		panel.add(ingredientsTA);
+	//	panel.add(ingredientsJL);
+	//	panel.add(ingredientsTA);
 //		panel.add(condimentsJL);
 //		panel.add(condiment1CB);
 //		panel.add(condiment2CB);
