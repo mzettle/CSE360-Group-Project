@@ -90,7 +90,14 @@ public class MenuItemGUI extends JDialog  {
 		headerJL.setForeground(Color.black);
 		headerJL.setFont(new Font("Time", Font.BOLD, 10));
 		
-		picLabel = new JLabel(new ImageIcon(itemPic));
+		// picLabel = new JLabel(new ImageIcon(itemPic));
+		// picLabel.setPreferredSize(new Dimension(100,100));
+		// Utilizes resizing function from Image and converts back into ImageIcon to
+		// initialize in JLabel
+		ImageIcon imgIcon = new ImageIcon(itemPic);
+		Image toImg = imgIcon.getImage();
+		Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+		picLabel = new JLabel(new ImageIcon(resizedImg));
 		picLabel.setPreferredSize(new Dimension(100,100));
 		
 		descriptionJL = new JLabel("Description:", SwingConstants.LEFT);
