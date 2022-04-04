@@ -222,6 +222,8 @@ public class MenuGUI extends JPanel {
 		
 		panel2.add(descriptionJL, BorderLayout.CENTER);
 		
+		searchTF.setEnabled(false);
+		
 
 		
 		//-------------------------------------
