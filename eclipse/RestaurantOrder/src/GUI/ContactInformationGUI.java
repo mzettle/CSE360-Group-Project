@@ -16,6 +16,7 @@ public class ContactInformationGUI extends JPanel {
 	protected JLabel headerJL, fnameJL, lnameJL, phoneJL, emailJL;
 	protected JButton loginHeader, home, cart, updateJB, backJB;
 	protected JTextField fnameTF, lnameTF, phoneTF, emailTF;
+	private Customer cust;
 	
 	public ContactInformationGUI() {
 		
@@ -105,7 +106,7 @@ public class ContactInformationGUI extends JPanel {
 		updateJB = new JButton("Update Profile");
 		updateJB.setBorderPainted(true);
 		updateJB.setPreferredSize(new Dimension(50, 50));
-		//	editContactJB.addActionListener(new ButtonListener());
+		updateJB.addActionListener(new ButtonListener());
 		
 		backJB = new JButton("Back");
 		backJB.setBorderPainted(true);
@@ -148,24 +149,34 @@ public class ContactInformationGUI extends JPanel {
 		add(panel2, "South");
 	}
 	
-	private class TextFieldListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent event) {
-			
-		}
-	}
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
-			
 			if(event.getSource() == backJB) Main.switchView("AccountGUI");
+			
+			if(event.getSource() == updateJB) {
+				String fName, lName, phone, email;
+				fName = fnameTF.getText();
+				lName = lnameTF.getText();
+				phone = phoneTF.getText();
+				email = emailTF.getText();
+				
+				cust.setContactInfo(fName, lName, phone, email);
+				
+				Main.switchView("AccountGUI");
+				Main.accountGUI.UpdateInfo(cust);
+				Main.saveUsers();
+				
+				
+			}
 		}
 	}
 	
 	public void updateInfo(Customer cust) {
+		this.cust = cust;
 		fnameTF.setText(cust.contactInfo.firstName);
 		lnameTF.setText(cust.contactInfo.lastName);
 		phoneTF.setText(cust.contactInfo.phoneNumber);

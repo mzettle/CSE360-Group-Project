@@ -23,7 +23,7 @@ public class Customer extends Account{
 	}
 
 	public void setPaymentInfo(String fName, String lName, String creditCardNumber, int eMonth, int eYear, int creditCardCSV, String staddress, String city, String state, String country, String postalCode){
-		paymentInfo.firstName = fName;
+		paymentInfo.firstName = fName; 
 		paymentInfo.lastName = lName;
 		paymentInfo.ccNumber = creditCardNumber;
 		paymentInfo.expMonth = eMonth;
