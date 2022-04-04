@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -114,7 +115,10 @@ public class MenuGUI extends JPanel {
 		drinkButtons = new ArrayList<JButton>();
 		
 		for(int i = 0; i<Main.menu.appetizerArray.size(); i++) {
-			appetizerButtons.add(new JButton(Main.menu.appetizerArray.get(i).getName(), new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath())));
+			ImageIcon imgIcon = new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath());
+			Image toImg = imgIcon.getImage();
+			Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			appetizerButtons.add(new JButton(Main.menu.appetizerArray.get(i).getName(), new ImageIcon(resizedImg)));
 			appetizerButtons.get(i).setPreferredSize(menuItemSize);
 			appetizerButtons.get(i).addActionListener(new ItemListener());
 			appetizerButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -122,7 +126,10 @@ public class MenuGUI extends JPanel {
 		}
 		
 		for(int i=0; i<Main.menu.entreeArray.size(); i++) {
-			entreeButtons.add(new JButton(Main.menu.entreeArray.get(i).getName() ,new ImageIcon(Main.menu.entreeArray.get(i).getPicPath())));
+			ImageIcon imgIcon = new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath());
+			Image toImg = imgIcon.getImage();
+			Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			entreeButtons.add(new JButton(Main.menu.entreeArray.get(i).getName() ,new ImageIcon(resizedImg)));
 			entreeButtons.get(i).setPreferredSize(menuItemSize);
 			entreeButtons.get(i).addActionListener(new ItemListener());
 			entreeButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -131,7 +138,10 @@ public class MenuGUI extends JPanel {
 		}
 		
 		for(int i=0; i<Main.menu.dessertArray.size(); i++) {
-			dessertButtons.add(new JButton(Main.menu.dessertArray.get(i).getName() ,new ImageIcon(Main.menu.dessertArray.get(i).getPicPath())));
+			ImageIcon imgIcon = new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath());
+			Image toImg = imgIcon.getImage();
+			Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			dessertButtons.add(new JButton(Main.menu.dessertArray.get(i).getName() ,new ImageIcon(resizedImg)));
 			dessertButtons.get(i).setPreferredSize(menuItemSize);
 			dessertButtons.get(i).addActionListener(new ItemListener());
 			dessertButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -140,7 +150,10 @@ public class MenuGUI extends JPanel {
 		}
 		
 		for(int i=0; i<Main.menu.drinkArray.size(); i++) {
-			drinkButtons.add(new JButton(Main.menu.drinkArray.get(i).getName() ,new ImageIcon(Main.menu.drinkArray.get(i).getPicPath())));
+			ImageIcon imgIcon = new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath());
+			Image toImg = imgIcon.getImage();
+			Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			drinkButtons.add(new JButton(Main.menu.drinkArray.get(i).getName() ,new ImageIcon(resizedImg)));
 			drinkButtons.get(i).setPreferredSize(menuItemSize);
 			drinkButtons.get(i).addActionListener(new ItemListener());
 			drinkButtons.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
