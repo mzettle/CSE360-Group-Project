@@ -209,7 +209,7 @@ public class AccountGUI extends JPanel {
 				Main.switchView("ContactInformationGUI");
 			}
 			if(event.getSource() == paymentInfo) {
-				Main.paymentInfoGUI.updateInfo(cust);
+				Main.paymentInfoGUI.updateInfo(cust, false);
 				Main.switchView("PaymentInformationGUI");
 			}
 		}

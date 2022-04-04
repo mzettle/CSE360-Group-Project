@@ -64,12 +64,12 @@ public class Main {
 		checkoutPaymentGUI = new PaymentInformationGUI(true);
 		panel.add(checkoutPaymentGUI, "CheckoutPaymentGUI");
 		panel.add(new RegisterGUI(), "RegisterGUI");
-<<<<<<< HEAD
+
 		adminGUI = new AdminGUI();
 		panel.add(adminGUI, "AdminGUI");
-=======
+
 		panel.add(new ConfirmationGUI(), "ConfirmationGUI");
->>>>>>> ac6dbc98a932972331c8b061cb2491d97f017a62
+
 		
 		//show MenuGUI first
 		cards.show(panel, "MenuGUI");
