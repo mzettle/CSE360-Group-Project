@@ -35,6 +35,8 @@ public class MenuGUI extends JPanel {
 	protected JScrollBar rightSB;
 	protected JLabel appetizerJL, entreeJL, descriptionJL, drinkJL, dessertJL;
 	
+	private String defaultDescription = "Click on an item to view its description or add it to your cart. Make sure to sign in or create an account!";
+	
 	public MenuGUI() {
 		
 		Dimension menuItemSize = new Dimension(200,130), categoryDim = new Dimension(1000,1000);
@@ -165,9 +167,7 @@ public class MenuGUI extends JPanel {
 		drinkJL .setForeground(Color.black);
 		drinkJL .setFont(new Font(Font.SERIF, Font.BOLD, 20));
 		
-		String description = "Click on an item to view its description or add it to your cart. Make sure to sign in or create an account!";
-		
-		descriptionJL = new JLabel(description, SwingConstants.CENTER);
+		descriptionJL = new JLabel(defaultDescription, SwingConstants.CENTER);
 		descriptionJL .setForeground(Color.black);
 		descriptionJL .setFont(new Font(Font.SERIF , Font.PLAIN, 20));
 		
@@ -245,12 +245,17 @@ public class MenuGUI extends JPanel {
 			if(event.getSource() == home) {
 				System.out.println("accounts in list: " + Main.accounts.users.size());
 				for(int i=0; i<Main.accounts.users.size(); i++) {
-					System.out.println(Main.accounts.users.get(i).username);
+					System.out.println(Main.accounts.users.get(i).getUsername());
 				}
 			}
 			
 			//Navigation buttons
-			if(event.getSource() == login) Main.switchView("SignInGUI");
+			if(event.getSource() == login) {
+				
+				//sign in button
+				if(Main.cust == null) Main.switchView("SignInGUI"); //sign in if nobody is signed in
+				else Main.signOut(); //else sign out
+			}
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 		}
 	}
@@ -305,5 +310,15 @@ public class MenuGUI extends JPanel {
 			}
 	}
 	
+		public void updateLogin() {
+			if(Main.cust == null) {
+				descriptionJL.setText(defaultDescription);
+				login.setText("Sign In/Register");
+			}
+			else {
+				descriptionJL.setText("Welcome, " + Main.cust.contactInfo.firstName + "!");
+				login.setText("Sign Out");
+			}
+		}
 	
 }

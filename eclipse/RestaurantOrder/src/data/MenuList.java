@@ -60,6 +60,18 @@ public class MenuList {
 		}
 	}
 	
+	public double cartTotal() {
+		if(shoppingCart.isEmpty()) return 0.0;
+		
+		Double total = 0.0;
+		
+		for(int i=0; i<shoppingCart.size(); i++) {
+			total += shoppingCart.get(i).getQuantity()*shoppingCart.get(i).getPrice();
+		}
+		
+		return total;
+	}
+	
 	public boolean readFile(File inputFile) {
 		System.out.println("readfile called");
 		int importErrors = 0;

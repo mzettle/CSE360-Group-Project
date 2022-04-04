@@ -173,8 +173,8 @@ public class AccountGUI extends JPanel {
 		// add to panels				
 		//-------------------------------------
 		headerPanel.add(home);
-		headerPanel.add(loginHeader);
-		headerPanel.add(cart);
+	//	headerPanel.add(loginHeader);
+	//	headerPanel.add(cart);
 
 		panel1.add(headerJL);
 		panel1.add(contactJL);

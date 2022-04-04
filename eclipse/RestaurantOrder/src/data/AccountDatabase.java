@@ -61,6 +61,7 @@ public class AccountDatabase {
 					users.add(new AdminAccount(row[1], row[2]));
 					break;
 				default: 
+					System.out.println("Invalid user: " + line);
 					entry--; //user had invalid type, so decrement entry
 					break;
 				}

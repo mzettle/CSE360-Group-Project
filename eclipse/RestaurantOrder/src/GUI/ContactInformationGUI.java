@@ -143,7 +143,7 @@ public class ContactInformationGUI extends JPanel {
 		//-------------------------------------
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(1100, 600));
-		add(headerPanel, "North");
+	//	add(headerPanel, "North");
 		add(scrollPane, "Center");
 		add(panel2, "South");
 	}

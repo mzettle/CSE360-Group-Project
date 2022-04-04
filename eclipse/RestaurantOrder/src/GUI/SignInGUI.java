@@ -65,7 +65,7 @@ public class SignInGUI extends JPanel {
 		unTF.setPreferredSize(new Dimension(10, 10));
 		unTF.addActionListener(new TextFieldListener());
 		
-		pwTF = new JTextField(SwingConstants.CENTER);
+		pwTF = new JPasswordField(SwingConstants.CENTER);
 		pwTF.setForeground(Color.GRAY);
 		pwTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
 		pwTF.setPreferredSize(new Dimension(10, 10));
@@ -129,12 +129,10 @@ public class SignInGUI extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == unTF) {
-			   username = unTF.getText();
-			   System.out.println(username);
+			   pwTF.requestFocus();
 			}
 			else if(event.getSource() == pwTF) {
-			   password = pwTF.getText();
-			   System.out.println(password);
+			   login();
 			}
 		}
 	}
@@ -149,20 +147,33 @@ public class SignInGUI extends JPanel {
 		//	if(event.getSource() == login) Main.switchView("AccountGUI");
 			if(event.getSource() == register)Main.switchView("RegisterGUI");
 			
-			if(event.getSource() == login) {
-				
-				Account user = Main.accounts.lookUpUsername(unTF.getText());
-				
-				if(user != null) {
+			if(event.getSource() == login) login();
+		}
+	}
+
+	private void login() {
+		Account user = Main.accounts.lookUpUsername(unTF.getText());
+		
+		if(user != null) {
+			if(user.verifyPass(pwTF.getText())) {
+				if(user instanceof Customer) {
+					Main.cust = (Customer) user;
 					Main.accountGUI.UpdateInfo(((Customer) user));
 					Main.switchView("AccountGUI");
 				}
 				else {
-					showMessageDialog(null, "Invalid Username!");
+					showMessageDialog(null, "This is an admin account!");
 				}
 			}
+			else {
+				showMessageDialog(null, "Incorrect Password!");
+				pwTF.setText("");
+			}
+		}
+		else {
+			showMessageDialog(null, "Invalid Username!");
 		}
 	}
-
+	
 }
 

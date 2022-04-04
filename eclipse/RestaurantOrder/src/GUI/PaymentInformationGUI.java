@@ -30,6 +30,12 @@ public class PaymentInformationGUI extends JPanel {
 			"South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", 
 			"Washington", "Wisconsin", "West Virginia", "Wyoming"};
 	
+	private String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+	
+	private String[] year = {"2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", 
+			"2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", 
+			"2040", "2041"};
+	
 	public PaymentInformationGUI() {
 		
 		Color  gray   = new Color(222, 222,  222);
@@ -149,12 +155,10 @@ public class PaymentInformationGUI extends JPanel {
 		stateCB = new JComboBox(states);
 		stateCB.setEditable(false);
 		
-		String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+		
 		expMCB = new JComboBox(month);
 		
-		String[] year = {"2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", 
-				"2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", 
-				"2040", "2041"};
+		
 		expYCB = new JComboBox(year);
 		
 		//-------------------------------------
@@ -210,8 +214,8 @@ public class PaymentInformationGUI extends JPanel {
 		panel1.add(new JLabel(""));
 		panel1.add(cardJL);
 		panel1.add(new JLabel(""));
-		panel1.add(cardNameJL);
-		panel1.add(cardNameTF);
+	//	panel1.add(cardNameJL);
+	//	panel1.add(cardNameTF);
 		panel1.add(cardNumJL);
 		panel1.add(cardNumTF);
 		panel1.add(expMJL);
@@ -230,7 +234,7 @@ public class PaymentInformationGUI extends JPanel {
 		//-------------------------------------
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(1100, 600));
-		add(headerPanel, "North");
+	//	add(headerPanel, "North");
 		add(scrollPane, "Center");
 		add(panel2, "South");	
 	}
@@ -266,5 +270,24 @@ public class PaymentInformationGUI extends JPanel {
 		}
 		
 		zipTF.setText(cust.paymentInfo.postalCode);
+		
+		cardNumTF.setText(cust.paymentInfo.ccNumber);
+		
+		for(int i=0; i<month.length; i++) {
+			if(Integer.parseInt(month[i]) == cust.paymentInfo.expMonth) {
+				expMCB.setSelectedIndex(i);
+				break;
+			}
+		}
+		
+		for(int i=0; i<year.length; i++) {
+			if(Integer.parseInt(year[i]) == cust.paymentInfo.expYear) {
+				expYCB.setSelectedIndex(i);
+				break;
+			}
+		}
+		
+		cvvTF.setText(Integer.toString(cust.paymentInfo.ccCSV));
+		
 	}
 }

@@ -4,6 +4,6 @@ public class AdminAccount extends Account {
 
 	public AdminAccount(String username, String password) {
 		this.setUsername(username);
-		this.setPassword(username);
+		this.setPassword(password);
 	}
 }

@@ -15,12 +15,12 @@ public class CartGUI extends JPanel {
 	
 	protected JPanel headerPanel, panel1, panel2, panel3;
 	protected JLabel headerJL, reviewJL, subtotalJL;
-	protected JButton loginHeader, home, cart, returnJB, checkoutJB;
+	protected JButton loginHeader, home, cart, returnJB, checkoutJB, deleteJB;
 	
 	protected JTable cartItems;
 	DefaultTableModel tableModel;
 	
-	protected String columns[] = {"Item", "Qty", "Select"};
+	protected String columns[] = {"Item", "Qty", "Price"};
 	
 	public CartGUI() {
 		
@@ -40,7 +40,7 @@ public class CartGUI extends JPanel {
 		
 		panel2 = new JPanel();
 		panel2.setBorder(BorderFactory.createEmptyBorder(25, 200, 70, 200));
-		panel2.setLayout(new GridLayout(1, 2, 10, 10));	
+		panel2.setLayout(new GridLayout(1, 3, 10, 10));	
 		panel2.setBackground(gray);
 		//panel2 = new JPanel();
 		//panel2.setBorder(BorderFactory.createEmptyBorder(20, 220, 20, 220));
@@ -101,12 +101,19 @@ public class CartGUI extends JPanel {
 		checkoutJB.setPreferredSize(new Dimension(50, 50));
 		checkoutJB.addActionListener(new ButtonListener());
 		
+		deleteJB = new JButton("Delete Selected");
+		deleteJB.setBorderPainted(true);
+		deleteJB.setPreferredSize(new Dimension(50, 50));
+		deleteJB.addActionListener(new ButtonListener());
+		
 		//-------------------------------------
 		//JTable
 		//-------------------------------------
 		
 		tableModel = new DefaultTableModel(columns, 0);
 		cartItems = new JTable(tableModel);
+		cartItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		cartItems.setEnabled(false);
 		
 		//-------------------------------------
 		// add to panels				
@@ -123,6 +130,7 @@ public class CartGUI extends JPanel {
 		panel1.add(subtotalJL, "South");
 		
 		panel2.add(returnJB);
+		panel2.add(deleteJB);
 		panel2.add(checkoutJB);
 		
 		//-------------------------------------
@@ -145,13 +153,18 @@ public class CartGUI extends JPanel {
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
-			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
+			if(event.getSource() == loginHeader) {
+				if(Main.cust == null) Main.switchView("SignInGUI"); //sign in if nobody is signed in
+				else Main.signOut(); //else sign out
+			}
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home || event.getSource() == returnJB)Main.switchView("MenuGUI");
 			
-			//for debug
-			if(event.getSource() == checkoutJB) {
-				System.out.println("This should delete cart item #: " + cartItems.getSelectedRow());
+
+			if(event.getSource() == checkoutJB) {}
+			if(event.getSource() == deleteJB) {
+				Main.menu.shoppingCart.remove(cartItems.getSelectedRow());
+				updateCart();
 			}
 		}
 		
@@ -159,14 +172,42 @@ public class CartGUI extends JPanel {
 	}
 	
 	public void updateCart() {
+		double price;
+		int qty;
+		String subPrice;
+		
+		tableModel.setRowCount(0);
+		
 		if(Main.menu.shoppingCart.isEmpty()) {
 			showMessageDialog(null, "Your cart is empty! Please add some items.");
 			Main.switchView("MenuGUI");
 		}
 		else {
 			for(int i=0; i<Main.menu.shoppingCart.size(); i++){
-				Object[] data = {Main.menu.shoppingCart.get(i).getName(), Main.menu.shoppingCart.get(i).getQuantity(), new JCheckBox("check")};
+				
+				//get price information
+				price = Main.menu.shoppingCart.get(i).getPrice();
+				qty = Main.menu.shoppingCart.get(i).getQuantity();
+				
+				//if the qty is more than 1, show the total and price per
+				if(Main.menu.shoppingCart.get(i).getQuantity() == 1)
+					subPrice = String.format("$%.2f", price);
+				else subPrice = String.format("$%.2f", price * qty) + " (" + String.format("$%.2f", price) + " ea.)";
+				
+				//form the row and add it to the jtable
+				Object[] data = {Main.menu.shoppingCart.get(i).getName(), qty, subPrice};
 				tableModel.addRow(data);
+				
+				//calculate and display the subtotal on the screen
+				subtotalJL.setText("Order Subtotal: $" + String.format("%.2f", Main.menu.cartTotal()));
+				
+				//update login buttons
+				if(Main.cust == null) {
+					loginHeader.setText("Sign In/Register");
+				}
+				else {
+					loginHeader.setText("Sign Out");
+				}
 			}
 		}
 	}

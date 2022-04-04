@@ -23,16 +23,16 @@ public class Customer extends Account{
 	}
 
 	public void setPaymentInfo(String fName, String lName, String creditCardNumber, int eMonth, int eYear, int creditCardCSV, String staddress, String city, String state, String country, String postalCode){
-		this.paymentInfo.firstName = fName;
-		this.paymentInfo.lastName = lName;
-		this.paymentInfo.ccNumber = creditCardNumber;
-		this.paymentInfo.expMonth = eMonth;
-		this.paymentInfo.expYear = eYear;
-		this.paymentInfo.ccCSV = creditCardCSV;
-		this.paymentInfo.address = staddress;
-		this.paymentInfo.city = city;
-		this.paymentInfo.state = state;
-		this.paymentInfo.country = country;
-		this.paymentInfo.postalCode = postalCode;
+		paymentInfo.firstName = fName;
+		paymentInfo.lastName = lName;
+		paymentInfo.ccNumber = creditCardNumber;
+		paymentInfo.expMonth = eMonth;
+		paymentInfo.expYear = eYear;
+		paymentInfo.ccCSV = creditCardCSV;
+		paymentInfo.address = staddress;
+		paymentInfo.city = city;
+		paymentInfo.state = state;
+		paymentInfo.country = country;
+		paymentInfo.postalCode = postalCode;
 	}
 }

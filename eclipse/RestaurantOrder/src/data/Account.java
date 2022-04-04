@@ -4,8 +4,8 @@ package data;
 public abstract class Account {
 	// changed username status from public->private; use getters
 	// More reliability and control
-	public String username; //temp public
-	public String password;
+	private String username;
+	private String password;
 	
 	public boolean verifyPass(String input) {
 		// String.equals(String) condition that they are not passing
@@ -19,7 +19,7 @@ public abstract class Account {
 	}
 	
 	// created protected getters/setters for Account Information
-	protected String getUsername() {
+	public String getUsername() {
 		return this.username;
 	}
 	
@@ -27,11 +27,11 @@ public abstract class Account {
 		return this.password;
 	}
 	
-	protected void setUsername(String newUsername) {
+	public void setUsername(String newUsername) {
 		this.username = newUsername;
 	}
 	
-	protected void setPassword(String newPassword) {
+	public void setPassword(String newPassword) {
 		this.password = newPassword;
 	}
 }

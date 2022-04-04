@@ -6,15 +6,17 @@ import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 import data.AccountDatabase;
+import data.Customer;
 import data.MenuList;
 
 public class Main {
 	
 	public static MenuList menu;
 	public static AccountDatabase accounts;
-	public static boolean refresh = true;
+	public static Customer cust = null;
 	
 	private static JFrame frame;
 	private static JPanel panel; //panel for cardlayout
@@ -24,13 +26,14 @@ public class Main {
 	public static PaymentInformationGUI paymentInfoGUI;
 	public static ContactInformationGUI contactInfoGUI;
 	private static CartGUI cartGUI;
+	private static MenuGUI menuGUI;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		menu = new MenuList();
 		accounts = new AccountDatabase();
 		
-		menu.readFile(new File("test.tsv"));
+		menu.readFile(new File("menu.tsv"));
 		accounts.readFile(new File("users.tsv"));
 		
 		//initialize main window frame
@@ -45,7 +48,8 @@ public class Main {
 		
 		
 		//add all gui interfaces to the cardlayout
-		panel.add(new MenuGUI(), "MenuGUI");
+		menuGUI = new MenuGUI();
+		panel.add(menuGUI, "MenuGUI");
 		panel.add(new SignInGUI(), "SignInGUI");
 		cartGUI = new CartGUI();
 		panel.add(cartGUI, "CartGUI");
@@ -64,7 +68,6 @@ public class Main {
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);
-		refresh = false;
 	}
 	
 	
@@ -72,6 +75,13 @@ public class Main {
 	public static void switchView(String name) {
 		cards.show(panel,  name);
 		if(name == "CartGUI") cartGUI.updateCart();
+		if(name == "MenuGUI") menuGUI.updateLogin();
+	}
+	
+	public static void signOut() {
+		cust = null;
+		switchView("MenuGUI");
+		showMessageDialog(null, "You have sucessfully signed out!");
 	}
 
 }
