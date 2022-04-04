@@ -126,7 +126,7 @@ public class MenuGUI extends JPanel {
 		}
 		
 		for(int i=0; i<Main.menu.entreeArray.size(); i++) {
-			ImageIcon imgIcon = new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath());
+			ImageIcon imgIcon = new ImageIcon(Main.menu.entreeArray.get(i).getPicPath());
 			Image toImg = imgIcon.getImage();
 			Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 			entreeButtons.add(new JButton(Main.menu.entreeArray.get(i).getName() ,new ImageIcon(resizedImg)));
@@ -138,7 +138,7 @@ public class MenuGUI extends JPanel {
 		}
 		
 		for(int i=0; i<Main.menu.dessertArray.size(); i++) {
-			ImageIcon imgIcon = new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath());
+			ImageIcon imgIcon = new ImageIcon(Main.menu.dessertArray.get(i).getPicPath());
 			Image toImg = imgIcon.getImage();
 			Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 			dessertButtons.add(new JButton(Main.menu.dessertArray.get(i).getName() ,new ImageIcon(resizedImg)));
@@ -150,7 +150,7 @@ public class MenuGUI extends JPanel {
 		}
 		
 		for(int i=0; i<Main.menu.drinkArray.size(); i++) {
-			ImageIcon imgIcon = new ImageIcon(Main.menu.appetizerArray.get(i).getPicPath());
+			ImageIcon imgIcon = new ImageIcon(Main.menu.drinkArray.get(i).getPicPath());
 			Image toImg = imgIcon.getImage();
 			Image resizedImg = toImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 			drinkButtons.add(new JButton(Main.menu.drinkArray.get(i).getName() ,new ImageIcon(resizedImg)));
