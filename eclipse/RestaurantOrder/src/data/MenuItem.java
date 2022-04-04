@@ -6,10 +6,13 @@ public class MenuItem{
 	private String picturePath;
 	private int qnty;
 	private String customization;
+	private int cookTime;
 	
 	//- Quantity added to facilitate addToCart function better
 	//- Customization String chosen rather than Array of customization. 
 	//- Plans to use a TSV format?
+	
+	// // TODO - MODIFY FUNCTIONALITY TO INCLUDE COOKTIME + CHANGE IN TSV FILE AS WELL
 	
 	//- Overloaded function for base function / default initialization on menuArrays
 	public MenuItem(String name, String desc, String pPath, double price, int qnty) {
@@ -19,6 +22,7 @@ public class MenuItem{
 		this.price = price;
 		this.qnty = qnty;
 		this.customization = "";
+		this.cookTime = 5;
 	}
 	
 	//- Overloaded function for optional customization
@@ -29,6 +33,7 @@ public class MenuItem{
 		this.price = price;
 		this.qnty = 0;
 		this.customization = custom;
+		this.cookTime = 5;
 	}
 	
 	public String getName() {
@@ -53,6 +58,10 @@ public class MenuItem{
 	
 	public String getCustomization() {
 		return this.customization;
+	}
+	
+	public int getCookTime() {
+		return this.cookTime;
 	}
 	
 	public void setQuantity(int newQnty) {
