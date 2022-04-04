@@ -12,7 +12,7 @@ import javax.swing.*;
 
 import data.Customer;
 
-public class PaymentInformationGUI extends JPanel {
+public class PaymentCheckout extends JPanel {
 	
 	private boolean checkout;
 	private Customer cust;
@@ -41,7 +41,7 @@ public class PaymentInformationGUI extends JPanel {
 			"2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", 
 			"2040", "2041"};
 	
-	public PaymentInformationGUI(boolean checkout) {
+	public PaymentCheckout(boolean checkout) {
 		
 		this.checkout = checkout;
 		
@@ -260,9 +260,8 @@ public class PaymentInformationGUI extends JPanel {
 			if(event.getSource() == backJB)Main.switchView("AccountGUI");
 			
 			if(event.getSource() == saveJB) {
-				
 				if(checkout) {
-					Main.switchView("ConfirmationGUI");
+					showMessageDialog(null, "Order Placed");
 				}
 				else {
 					String fName, lName, address, city, state, cardNum, cvv;
@@ -288,19 +287,8 @@ public class PaymentInformationGUI extends JPanel {
 		}
 	}
 	
-	public void updateInfo(Customer cust, boolean checkout) {
-		
-		this.checkout = checkout;
+	public void updateInfo(Customer cust) {
 		this.cust = cust;
-		
-		if(checkout) saveJB.setText("Place Order");
-		saveJB.setText("Save Payment");
-		
-		if(cust!=null) {
-		
-		
-		
-			
 		fnameTF.setText(cust.paymentInfo.firstName);
 		lnameTF.setText(cust.paymentInfo.lastName);
 		addressTF.setText(cust.paymentInfo.address);
@@ -332,6 +320,6 @@ public class PaymentInformationGUI extends JPanel {
 		}
 		
 		cvvTF.setText(Integer.toString(cust.paymentInfo.ccCSV));
-		}
+		
 	}
 }

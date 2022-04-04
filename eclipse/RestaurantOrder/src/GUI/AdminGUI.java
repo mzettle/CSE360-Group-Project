@@ -130,7 +130,7 @@ public class AdminGUI extends JPanel {
 		//JScrollPane scrollPane = new JScrollPane(panel3);
 	//	panel1.add(scrollPane);
 		panel1.add(new JScrollPane(cartItems), "Center");
-		panel1.add(subtotalJL, "South");
+		//panel1.add(subtotalJL, "South");
 		
 		panel2.add(returnJB);
 		panel2.add(deleteJB);
@@ -147,12 +147,6 @@ public class AdminGUI extends JPanel {
 		
 	}
 	
-	private class TextFieldListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent event) {
-			
-		}
-	}
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
