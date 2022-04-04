@@ -1,0 +1,13 @@
+appetizer	French Fries	Potatoes	fries.jpg	12.98
+appetizer	Garlic Bread	"Bread, Garlic, Green Onion"	garlicBread.JPG	12.99
+entree	Steak	"Beef, Butter"	steak.jpg	21.15
+appetizer	German Fries	Potatoes	germanFries.JPG	12.99
+entree	Butter Chicken	"Chicken Breasts, Ginger-Garlic paste, Chili Powder, Butter, Tomato"	buterChicken.jpg	13.99
+entree	Chili-Garlic Beef Stir Fry	"Beef, Garlic, Zucchini, Carrots, Cabbage, Green Onion, Red Pepper, Chili Powder"	beefStirfry.jpg	14.35
+entree	Cucumber Salad	"Cucumber, Rice Vinegar, Garlic, Red Pepper, Cilantro, Sesame Seeds"	cucumberSalad.jpg	13.45
+dessert	Strawberry French Cake	"Strawberry, Vanilla, Whipped Cream"	strawberryFrenchCake.jpg	9.99
+dessert	Pumpkin Spice Tiramisu	"Pumpkin, Pumpkin Spice, Vanilla, Whilled Cream, Chocolate Shavings"	pumpkinSpiceTiramisu.jpg	8.59
+entree	Spicy BBQ Shrimp	"Shrimp, Onion, Garlic, Butter, Chili Sauce, Tomato, Red Pepper, Parsley"	spicyBBQShrimp.jpg	18.99
+drink	Strawberry-Ginger Lemonade	"Strawberry, Pink Lemonade, Ginger, Mint"	strawberryLemonade.jpg	5.11
+drink	Cucumber Juice	"Cucumber, Granny Smith Apple, Coconut Water"	cucumberJuice.jpg	5.11
+drink	Mint Green Tea	"Mint, Green Tea, Honey, Lemon Grass"	ice cream.jpg	6.11
