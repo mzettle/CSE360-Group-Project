@@ -24,6 +24,7 @@ public class Main {
 	public static MenuItemGUI itemWindow;
 	public static AccountGUI accountGUI;
 	public static PaymentInformationGUI paymentInfoGUI;
+	public static PaymentInformationGUI checkoutPaymentGUI;
 	public static ContactInformationGUI contactInfoGUI;
 	private static CartGUI cartGUI;
 	private static MenuGUI menuGUI;
@@ -57,8 +58,10 @@ public class Main {
 		panel.add(accountGUI, "AccountGUI");
 		contactInfoGUI = new ContactInformationGUI();
 		panel.add(contactInfoGUI, "ContactInformationGUI");
-		paymentInfoGUI = new PaymentInformationGUI();
+		paymentInfoGUI = new PaymentInformationGUI(false);
 		panel.add(paymentInfoGUI, "PaymentInformationGUI");
+		checkoutPaymentGUI = new PaymentInformationGUI(true);
+		panel.add(checkoutPaymentGUI, "CheckoutPaymentGUI");
 		panel.add(new RegisterGUI(), "RegisterGUI");
 		
 		//show MenuGUI first

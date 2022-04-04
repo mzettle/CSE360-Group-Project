@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.*;
+import static javax.swing.JOptionPane.showMessageDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -11,6 +12,9 @@ import javax.swing.*;
 import data.Customer;
 
 public class PaymentInformationGUI extends JPanel {
+	
+	private boolean checkout;
+	private Customer cust;
 	
 	protected JPanel headerPanel, panel1, panel2;
 	protected JLabel billingJL, cardJL, fnameJL, lnameJL, addressJL, cityJL, stateJL, zipJL, 
@@ -36,7 +40,9 @@ public class PaymentInformationGUI extends JPanel {
 			"2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", 
 			"2040", "2041"};
 	
-	public PaymentInformationGUI() {
+	public PaymentInformationGUI(boolean checkout) {
+		
+		this.checkout = checkout;
 		
 		Color  gray   = new Color(222, 222,  222);
 		
@@ -180,6 +186,12 @@ public class PaymentInformationGUI extends JPanel {
 		cart.addActionListener(new ButtonListener());
 		
 		saveJB = new JButton("Save Payment");
+		saveJB.addActionListener(new ButtonListener());
+		
+		if(checkout) {
+			saveJB.setText("Place Order");
+		}
+		
 		saveJB.setBorderPainted(true);
 		saveJB.setPreferredSize(new Dimension(50, 50));
 		//	editContactJB.addActionListener(new ButtonListener());
@@ -239,24 +251,42 @@ public class PaymentInformationGUI extends JPanel {
 		add(panel2, "South");	
 	}
 	
-	private class TextFieldListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent event) {
-			
-		}
-	}
-	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
 			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
-			
 			if(event.getSource() == backJB)Main.switchView("AccountGUI");
+			
+			if(event.getSource() == saveJB) {
+				if(checkout) {
+					showMessageDialog(null, "Order Placed");
+				}
+				else {
+					String fName, lName, address, city, state, cardNum, cvv;
+					int expMonth, expYear;
+					
+					fName = fnameTF.getText();
+					lName = lnameTF.getText();
+					address = addressTF.getText();
+					city = cityTF.getText();
+					state = (String) stateCB.getSelectedItem();
+					cardNum = cardNumTF.getText();
+					cvv = cvvTF.getText();
+					expMonth = Integer.parseInt((String) expMCB.getSelectedItem());
+					expYear = Integer.parseInt((String) expYCB.getSelectedItem());
+					
+					cust.setPaymentInfo(fName, lName, cardNum, expMonth, expYear, expYear, address, city, state, cvv, state);
+					
+					Main.switchView("AccountGUI");
+					Main.accountGUI.UpdateInfo(cust);
+				}
+			}
 		}
 	}
 	
 	public void updateInfo(Customer cust) {
+		this.cust = cust;
 		fnameTF.setText(cust.paymentInfo.firstName);
 		lnameTF.setText(cust.paymentInfo.lastName);
 		addressTF.setText(cust.paymentInfo.address);

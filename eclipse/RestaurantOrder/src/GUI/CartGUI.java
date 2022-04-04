@@ -113,7 +113,6 @@ public class CartGUI extends JPanel {
 		tableModel = new DefaultTableModel(columns, 0);
 		cartItems = new JTable(tableModel);
 		cartItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		cartItems.setEnabled(false);
 		
 		//-------------------------------------
 		// add to panels				
