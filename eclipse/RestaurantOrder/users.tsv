@@ -1,2 +1,3 @@
-user	somebody	password	asdf	asdf	1	asdf	asdf	asdf	5555560000000000	1	1	1	asdf	asdf	asdf	sadf	1
-user	test	password	firstContactasdfasdf	lastContactasdfasdf	4802315113	mezettle@asu.edu	matthew	zett	5555560000000000	10	2023	2023	1234 N Something St.	Tempe	Colorado	2023	Colorado
+user	somebody	password	asdf	asdf	1	asdf	asdf	asdf	5.56E+15	1	1	1	asdf	asdf	asdf	sadf	1
+user	test	password	firstContactasdfasdf	lastContactasdfasdf	4802315113	mezettle@asu.edu	matthew	zett	5.56E+15	10	2023	2023	1234 N Something St.	Tempe	Colorado	2023	Colorado
+admin	admin	test															

@@ -26,6 +26,7 @@ public class Main {
 	public static PaymentInformationGUI paymentInfoGUI;
 	public static PaymentInformationGUI checkoutPaymentGUI;
 	public static ContactInformationGUI contactInfoGUI;
+	public static AdminGUI adminGUI;
 	private static CartGUI cartGUI;
 	private static MenuGUI menuGUI;
 	
@@ -63,6 +64,8 @@ public class Main {
 		checkoutPaymentGUI = new PaymentInformationGUI(true);
 		panel.add(checkoutPaymentGUI, "CheckoutPaymentGUI");
 		panel.add(new RegisterGUI(), "RegisterGUI");
+		adminGUI = new AdminGUI();
+		panel.add(adminGUI, "AdminGUI");
 		
 		//show MenuGUI first
 		cards.show(panel, "MenuGUI");
@@ -91,4 +94,8 @@ public class Main {
 		Main.accounts.writeFile(new File("users.tsv"));
 	}
 
+	
+	public static void close() {
+		frame.dispose();
+	}
 }
