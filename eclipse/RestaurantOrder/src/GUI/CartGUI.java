@@ -158,8 +158,8 @@ public class CartGUI extends JPanel {
 			
 
 			if(event.getSource() == checkoutJB) {
-				Main.paymentInfoGUI.updateInfo(Main.cust, true);
 				Main.switchView("PaymentInformationGUI");
+				Main.paymentInfoGUI.updateInfo(Main.cust, true);
 			}
 			if(event.getSource() == deleteJB) {
 				Main.menu.shoppingCart.remove(cartItems.getSelectedRow());
