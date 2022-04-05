@@ -12,8 +12,6 @@ public class Customer extends Account{
 		contactInfo = new ContactInfo();
 		paymentInfo = new PaymentInfo();
 		
-		this.setUsername(username);
-		this.setPassword(password);
 	}
 
 
