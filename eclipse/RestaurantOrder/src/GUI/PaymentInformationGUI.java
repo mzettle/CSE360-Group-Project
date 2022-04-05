@@ -294,7 +294,7 @@ public class PaymentInformationGUI extends JPanel {
 		this.cust = cust;
 		
 		if(checkout) saveJB.setText("Place Order");
-		saveJB.setText("Save Payment");
+		else saveJB.setText("Save Payment");
 		
 		if(cust!=null) {
 		
