@@ -4,12 +4,9 @@ import java.awt.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 public class CartGUI extends JPanel {
 	

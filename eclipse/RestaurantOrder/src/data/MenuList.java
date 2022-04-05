@@ -37,10 +37,6 @@ public class MenuList {
 		return false;
 	}
 	
-	/*public void removeItem(MenuItem item){
-		for(int index = 0; index < menuArray.)
-	}*/
-	
 	public void addToCart(MenuItem item, int qnty){
 		//- To be used only in Item Description Pop-Ups
 		item.setQuantity(qnty);
@@ -73,7 +69,7 @@ public class MenuList {
 	}
 	
 	public boolean readFile(File inputFile) {
-		System.out.println("readfile called");
+		System.out.println("Read Menu file called");
 		int importErrors = 0;
 		try {
 			BufferedReader TSVReader = new BufferedReader(new FileReader(inputFile));
@@ -98,14 +94,6 @@ public class MenuList {
 		}
 	}
 	
-	//- Probably calculated in the GUI
-	/*public int placeOrder(PayInfo info) {
-		int waitTime = 0;
-		for(MenuItem index : shoppingCart) {
-			
-		}
-		return waitTime;
-	}*/
 }
 
 
