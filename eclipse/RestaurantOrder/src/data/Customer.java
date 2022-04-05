@@ -7,6 +7,8 @@ public class Customer extends Account{
 	public PaymentInfo paymentInfo;
 	
 	public Customer(String username, String password) {
+		
+		super(username, password);
 		contactInfo = new ContactInfo();
 		paymentInfo = new PaymentInfo();
 		
