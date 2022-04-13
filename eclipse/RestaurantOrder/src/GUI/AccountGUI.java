@@ -10,88 +10,22 @@ import data.Account;
 import data.Customer;
 
 public class AccountGUI extends JPanel {
-
-	protected JFrame frame = new JFrame("Your Account");
 	
-	protected JPanel headerPanel, panel1, panel2;
-	protected JLabel headerJL, contactJL, contactInfoJL, paymentJL, paymentInforJL;
-	protected JButton loginHeader, home, cart, contactInfo, paymentInfo;
-	protected JTextField unTF, pwTF;
-	protected String contact, payment;
+	protected JButton home, contactInfo, paymentInfo;
 	protected JTextArea contactTA, paymentTA;
 	
 	protected Customer cust;
 	
 	public AccountGUI() {
+		
+		JPanel headerPanel, panel1, panel2;
+		JLabel headerJL, contactJL, paymentJL;
+		String contact, payment;
+
+		
 		Color gray = new Color(222, 222,  222);
 		
-		/*headerPanel = new JPanel();
-		headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		headerPanel.setLayout(new GridLayout(1, 4));
-		headerPanel.setBackground(Color.LIGHT_GRAY);
-		
-		panel1 = new JPanel();
-		panel1.setBorder(BorderFactory.createEmptyBorder(20, 220, 100, 220));
-		panel1.setLayout(new GridLayout(3, 1, 10, 20));	
-		panel1.setBackground(gray);
-		
-		//-------------------------------------
-		// JLabel
-		//-------------------------------------
-		headerJL = new JLabel("Your Account", SwingConstants.CENTER);
-		headerJL.setForeground(Color.BLACK);
-		headerJL.setFont(new Font(Font.SERIF, Font.BOLD, 30));
-		
-		//-------------------------------------
-		// JButton
-		//-------------------------------------
-		home = new JButton("Home");
-		home.setBorderPainted(true);
-		home.setPreferredSize(new Dimension(40, 40));
-		home.addActionListener(new ButtonListener());
-				
-		loginHeader = new JButton("Sign In/Register");
-		loginHeader .setBorderPainted(true);
-		loginHeader .setPreferredSize(new Dimension(40, 40));
-		loginHeader.addActionListener(new ButtonListener());
-		
-		cart = new JButton("Place Order");
-		cart.setBorderPainted(true);
-		cart.setPreferredSize(new Dimension(40, 40));
-		cart.addActionListener(new ButtonListener());
-		
-		contactInfo = new JButton("Contact Information");
-		contactInfo.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		contactInfo.setBorderPainted(true);
-		contactInfo.setPreferredSize(new Dimension(50, 50));
-		contactInfo.addActionListener(new ButtonListener());
-		
-		paymentInfo = new JButton("Payment Information");
-		paymentInfo.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		paymentInfo.setBorderPainted(true);
-		paymentInfo.setPreferredSize(new Dimension(50, 50));
-		paymentInfo.addActionListener(new ButtonListener());
-		
-		//-------------------------------------
-		// add to panels				
-		//-------------------------------------
-		headerPanel.add(home);
-		headerPanel.add(loginHeader);
-		headerPanel.add(cart);
-		
-		panel1.add(headerJL);
-		panel1.add(contactInfo);
-		panel1.add(paymentInfo);
-
-		//-------------------------------------
-		// add layout, and panels to frame
-		//-------------------------------------
-		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(1100, 600));
-		add(headerPanel, "North");
-		add(panel1, "Center");
-		*/
-		
+	
 		headerPanel = new JPanel();
 		//headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		headerPanel.setLayout(new GridLayout(1, 4));
@@ -148,16 +82,7 @@ public class AccountGUI extends JPanel {
 		home.setBorderPainted(true);
 		home.setPreferredSize(new Dimension(40, 40));
 		home.addActionListener(new ButtonListener());
-				
-		loginHeader = new JButton("Sign In/Register");
-		loginHeader .setBorderPainted(true);
-		loginHeader .setPreferredSize(new Dimension(40, 40));
-		loginHeader.addActionListener(new ButtonListener());
-
-		cart = new JButton("Place Order");
-		cart.setBorderPainted(true);
-		cart.setPreferredSize(new Dimension(40, 40));
-		cart.addActionListener(new ButtonListener());
+		
 
 		contactInfo = new JButton("Edit Contact Info");
 		contactInfo.setBorderPainted(true);
@@ -173,9 +98,7 @@ public class AccountGUI extends JPanel {
 		// add to panels				
 		//-------------------------------------
 		headerPanel.add(home);
-	//	headerPanel.add(loginHeader);
-	//	headerPanel.add(cart);
-
+		
 		panel1.add(headerJL);
 		panel1.add(contactJL);
 		panel1.add(contactTA);
@@ -185,7 +108,6 @@ public class AccountGUI extends JPanel {
 		panel2.add(contactInfo);
 		panel2.add(paymentInfo);
 
-		JScrollPane scrollPane = new JScrollPane(panel1);
 
 		//-------------------------------------
 		// add layout, and panels to frame
@@ -200,8 +122,6 @@ public class AccountGUI extends JPanel {
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
-			if(event.getSource() == loginHeader) Main.switchView("SignInGUI");
-			if(event.getSource() == cart) Main.switchView("CartGUI");
 			if(event.getSource() == home)Main.switchView("MenuGUI");
 			
 			if(event.getSource() == contactInfo) {

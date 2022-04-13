@@ -10,16 +10,18 @@ import javax.swing.table.DefaultTableModel;
 
 public class CartGUI extends JPanel {
 	
-	protected JPanel headerPanel, panel1, panel2, panel3;
-	protected JLabel headerJL, reviewJL, subtotalJL;
-	protected JButton loginHeader, home, cart, returnJB, checkoutJB, deleteJB;
 	
+	protected JButton loginHeader, home, cart, returnJB, checkoutJB, deleteJB;
+	protected JLabel subtotalJL;
 	protected JTable cartItems;
 	DefaultTableModel tableModel;
 	
 	protected String columns[] = {"Item", "Qty", "Price"};
 	
 	public CartGUI() {
+		
+		JPanel headerPanel, panel1, panel2, panel3;
+		JLabel headerJL, reviewJL;
 		
 		Color  gray   = new Color(222, 222,  222);
 		

@@ -12,13 +12,14 @@ import data.Customer;
 
 public class ContactInformationGUI extends JPanel {
 
-	protected JPanel headerPanel, panel1, panel2;
-	protected JLabel headerJL, fnameJL, lnameJL, phoneJL, emailJL;
 	protected JButton loginHeader, home, cart, updateJB, backJB;
 	protected JTextField fnameTF, lnameTF, phoneTF, emailTF;
 	private Customer cust;
 	
 	public ContactInformationGUI() {
+		
+		JPanel headerPanel, panel1, panel2;
+		JLabel headerJL, fnameJL, lnameJL, phoneJL, emailJL;
 		
 		Color  gray   = new Color(222, 222,  222);
 		

@@ -26,18 +26,19 @@ import javax.swing.SwingConstants;
 
 public class MenuGUI extends JPanel {
 	//JFrame frame;
-	protected JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems, entreeItems, drinkPanel, dessertPanel, drinkItems, dessertItems;
-	protected JTextField searchTF;
+	
 	protected JButton login, home, cart;
-	
 	protected ArrayList<JButton> appetizerButtons, entreeButtons, dessertButtons, drinkButtons;
+	private JLabel descriptionJL;
 	
-	protected JScrollBar rightSB;
-	protected JLabel appetizerJL, entreeJL, descriptionJL, drinkJL, dessertJL;
 	
 	private String defaultDescription = "Click on an item to view its description or add it to your cart. Make sure to sign in or create an account!";
 	
 	public MenuGUI() {
+		
+		JPanel panel, panel2, headerPanel, appetizerPanel, entreePanel, appetizerItems, entreeItems, drinkPanel, dessertPanel, drinkItems, dessertItems;
+		JTextField searchTF;
+		JLabel appetizerJL, entreeJL, drinkJL, dessertJL;
 		
 		Dimension menuItemSize = new Dimension(200,130), categoryDim = new Dimension(1000,1000);
 		
