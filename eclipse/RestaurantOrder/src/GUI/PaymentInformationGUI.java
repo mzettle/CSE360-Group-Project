@@ -4,9 +4,6 @@ import java.awt.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.io.File;
 
 import javax.swing.*;
 
@@ -17,9 +14,7 @@ public class PaymentInformationGUI extends JPanel {
 	private boolean checkout;
 	private Customer cust;
 	
-	protected JPanel headerPanel, panel1, panel2;
-	protected JLabel billingJL, cardJL, fnameJL, lnameJL, addressJL, cityJL, stateJL, zipJL, 
-						cardNameJL, cardNumJL, expMJL, expYJL, cvvJL;
+
 	protected JButton loginHeader, home, cart, saveJB, backJB;
 	protected JTextField fnameTF, lnameTF, addressTF, cityTF, zipTF, 
 						cardNameTF, cardNumTF, cvvTF;
@@ -44,6 +39,10 @@ public class PaymentInformationGUI extends JPanel {
 	public PaymentInformationGUI(boolean checkout) {
 		
 		this.checkout = checkout;
+		
+		JPanel headerPanel, panel1, panel2;
+		JLabel billingJL, cardJL, fnameJL, lnameJL, addressJL, cityJL, stateJL, zipJL, 
+							cardNameJL, cardNumJL, expMJL, expYJL, cvvJL;
 		
 		Color  gray   = new Color(222, 222,  222);
 		
@@ -294,7 +293,7 @@ public class PaymentInformationGUI extends JPanel {
 		this.cust = cust;
 		
 		if(checkout) saveJB.setText("Place Order");
-		saveJB.setText("Save Payment");
+		else saveJB.setText("Save Payment");
 		
 		if(cust!=null) {
 		

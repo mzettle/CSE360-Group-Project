@@ -15,10 +15,7 @@ import data.Customer;
 
 public class RegisterGUI extends JPanel {
 	
-	protected JPanel headerPanel, panel1, panel2;
-	protected JLabel accountJL, usernameJL, passwordJL, firstnameJL, lastnameJL, numberJL, emailJL,
-						billingJL, cardJL, fnameJL, lnameJL, addressJL, cityJL, stateJL, zipJL, 
-						cardNameJL, cardNumJL, expMJL, expYJL, cvvJL;
+
 	
 	protected JButton loginHeader, home, cart, saveJB, backJB;
 	
@@ -26,7 +23,9 @@ public class RegisterGUI extends JPanel {
 						fnameTF, lnameTF, addressTF, cityTF, zipTF, 
 						cardNameTF, cardNumTF, cvvTF;
 	protected JComboBox stateCB, expMCB, expYCB;
-	public String username,password, firstname, lastname, number, email, fname, lname, address, city, zip, state, expM, expY; 
+	
+	
+//	public String username,password, firstname, lastname, number, email, fname, lname, address, city, zip, state, expM, expY; 
 	
 	String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", 
 			"California", "Colorado", "Connecticut", "District of Columbia", "Delaware", 
@@ -45,6 +44,11 @@ public class RegisterGUI extends JPanel {
 	String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 	
 	public RegisterGUI() {
+		
+		JPanel headerPanel, panel1, panel2;
+		JLabel accountJL, usernameJL, passwordJL, firstnameJL, lastnameJL, numberJL, emailJL,
+							billingJL, cardJL, fnameJL, lnameJL, addressJL, cityJL, stateJL, zipJL, 
+							cardNameJL, cardNumJL, expMJL, expYJL, cvvJL;
 		
 		Color  gray   = new Color(222, 222,  222);
 		
@@ -158,73 +162,73 @@ public class RegisterGUI extends JPanel {
 		usernameTF = new JTextField(SwingConstants.CENTER);
 		usernameTF.setForeground(Color.GRAY);
 		usernameTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		usernameTF.addActionListener(new TextFieldListener());
+	//	usernameTF.addActionListener(new TextFieldListener());
 		
 		passwordTF = new JTextField(SwingConstants.CENTER);
 		passwordTF.setForeground(Color.GRAY);
 		passwordTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		passwordTF.addActionListener(new TextFieldListener());
+//		passwordTF.addActionListener(new TextFieldListener());
 		
 		firstnameTF = new JTextField(SwingConstants.CENTER);
 		firstnameTF.setForeground(Color.GRAY);
 		firstnameTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		firstnameTF.addActionListener(new TextFieldListener());
+	//	firstnameTF.addActionListener(new TextFieldListener());
 		
 		lastnameTF = new JTextField(SwingConstants.CENTER);
 		lastnameTF.setForeground(Color.GRAY);
 		lastnameTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		lastnameTF.addActionListener(new TextFieldListener());
+	//.addActionListener(new TextFieldListener());
 		
 		numberTF = new JTextField(SwingConstants.CENTER);
 		numberTF.setForeground(Color.GRAY);
 		numberTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		numberTF.addActionListener(new TextFieldListener());
+	//	numberTF.addActionListener(new TextFieldListener());
 		
 		emailTF = new JTextField(SwingConstants.CENTER);
 		emailTF.setForeground(Color.GRAY);
 		emailTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		emailTF.addActionListener(new TextFieldListener());
+	//	emailTF.addActionListener(new TextFieldListener());
 		
 		//payment info
 		fnameTF = new JTextField(SwingConstants.CENTER);
 		fnameTF.setForeground(Color.GRAY);
 		fnameTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		fnameTF.addActionListener(new TextFieldListener());
+	//	fnameTF.addActionListener(new TextFieldListener());
 		
 		lnameTF = new JTextField(SwingConstants.CENTER);
 		lnameTF.setForeground(Color.GRAY);
 		lnameTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		lnameTF.addActionListener(new TextFieldListener());
+	//	lnameTF.addActionListener(new TextFieldListener());
 		
 		addressTF = new JTextField(SwingConstants.CENTER);
 		addressTF.setForeground(Color.GRAY);
 		addressTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		addressTF.addActionListener(new TextFieldListener());
+//		addressTF.addActionListener(new TextFieldListener());
 		
 		cityTF = new JTextField(SwingConstants.CENTER);
 		cityTF.setForeground(Color.GRAY);
 		cityTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		cityTF.addActionListener(new TextFieldListener());
+//		cityTF.addActionListener(new TextFieldListener());
 		
 		zipTF = new JTextField(SwingConstants.CENTER);
 		zipTF.setForeground(Color.GRAY);
 		zipTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		zipTF.addActionListener(new TextFieldListener());
+	//	zipTF.addActionListener(new TextFieldListener());
 		
 		cardNameTF = new JTextField(SwingConstants.CENTER);
 		cardNameTF.setForeground(Color.GRAY);
 		cardNameTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		cardNameTF.addActionListener(new TextFieldListener());
+	//	cardNameTF.addActionListener(new TextFieldListener());
 		
 		cardNumTF = new JTextField(SwingConstants.CENTER);
 		cardNumTF.setForeground(Color.GRAY);
 		cardNumTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		cardNumTF.addActionListener(new TextFieldListener());
+	//	cardNumTF.addActionListener(new TextFieldListener());
 		
 		cvvTF = new JTextField(SwingConstants.CENTER);
 		cvvTF.setForeground(Color.GRAY);
 		cvvTF.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
-		cvvTF.addActionListener(new TextFieldListener());
+	//	cvvTF.addActionListener(new TextFieldListener());
 		
 		//-------------------------------------
 		// Combo Box
@@ -232,17 +236,17 @@ public class RegisterGUI extends JPanel {
 		
 		stateCB = new JComboBox(states);
 		stateCB.setEditable(false);
-		stateCB.addActionListener(new ComboBoxListener());
+	//	stateCB.addActionListener(new ComboBoxListener());
 		
 		
 		expMCB = new JComboBox(month);
 		expMCB.setEditable(false);
-		expMCB.addActionListener(new ComboBoxListener());
+//		expMCB.addActionListener(new ComboBoxListener());
 		
 		
 		expYCB = new JComboBox(year);
 		expYCB.setEditable(false);
-		expYCB.addActionListener(new ComboBoxListener());
+	//	expYCB.addActionListener(new ComboBoxListener());
 		
 		//-------------------------------------
 		// JButton
@@ -338,7 +342,7 @@ public class RegisterGUI extends JPanel {
 		add(scrollPane, "Center");
 		add(panel2, "South");	
 	}
-	
+	/*
 	private class ComboBoxListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == stateCB) state = (String)stateCB.getSelectedItem();
@@ -347,6 +351,7 @@ public class RegisterGUI extends JPanel {
 		}
 	}
 	
+
 	private class TextFieldListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent event) {
@@ -362,7 +367,7 @@ public class RegisterGUI extends JPanel {
 			if(event.getSource() == cityTF) city = cityTF.getText();
 			if(event.getSource() == zipTF) zip = zipTF.getText();
 		}
-	}
+	}*/
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {

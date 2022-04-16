@@ -14,13 +14,17 @@ import data.MenuList;
 
 public class Main {
 	
+	//Data Structures
 	public static MenuList menu;
 	public static AccountDatabase accounts;
 	public static Customer cust = null;
 	
+	//Main Window
 	private static JFrame frame;
 	private static JPanel panel; //panel for cardlayout
 	private static CardLayout cards; //cardlayout manager
+	
+	//GUI Panels
 	public static MenuItemGUI itemWindow;
 	public static AccountGUI accountGUI;
 	public static PaymentInformationGUI paymentInfoGUI;

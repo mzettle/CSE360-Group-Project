@@ -17,13 +17,14 @@ import javax.swing.JOptionPane;
 
 public class SignInGUI extends JPanel {
 	
-	protected JPanel headerPanel, panel1, panel2;
-	protected JLabel headerJL, unJL, pwJL;
+
 	protected JButton loginHeader, home, cart,login, register;
 	protected JTextField unTF, pwTF;
-	protected String username, password;
 	
 	public SignInGUI() {
+		
+		JPanel headerPanel, panel1, panel2;
+		JLabel headerJL, unJL, pwJL;
 		
 		Color gray = new Color(222, 222,  222);
 		

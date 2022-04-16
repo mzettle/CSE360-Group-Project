@@ -4,25 +4,24 @@ import java.awt.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 public class CartGUI extends JPanel {
 	
-	protected JPanel headerPanel, panel1, panel2, panel3;
-	protected JLabel headerJL, reviewJL, subtotalJL;
-	protected JButton loginHeader, home, cart, returnJB, checkoutJB, deleteJB;
 	
+	protected JButton loginHeader, home, cart, returnJB, checkoutJB, deleteJB;
+	protected JLabel subtotalJL;
 	protected JTable cartItems;
 	DefaultTableModel tableModel;
 	
 	protected String columns[] = {"Item", "Qty", "Price"};
 	
 	public CartGUI() {
+		
+		JPanel headerPanel, panel1, panel2, panel3;
+		JLabel headerJL, reviewJL;
 		
 		Color  gray   = new Color(222, 222,  222);
 		
@@ -161,8 +160,8 @@ public class CartGUI extends JPanel {
 			
 
 			if(event.getSource() == checkoutJB) {
-				Main.paymentInfoGUI.updateInfo(Main.cust, true);
 				Main.switchView("PaymentInformationGUI");
+				Main.paymentInfoGUI.updateInfo(Main.cust, true);
 			}
 			if(event.getSource() == deleteJB) {
 				Main.menu.shoppingCart.remove(cartItems.getSelectedRow());

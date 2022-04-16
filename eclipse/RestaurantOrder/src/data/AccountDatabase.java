@@ -60,7 +60,7 @@ public class AccountDatabase {
 					((Customer) users.get(entry)).setPaymentInfo(row[7], row[8], row[9], Integer.parseInt(row[10]), Integer.parseInt(row[11]), Integer.parseInt(row[12]), row[13], row[14], row[15], row[16], row[17]);
 					break;
 				case "admin" : 
-					users.add(new AdminAccount(row[1], row[2]));
+					users.add(new Account(row[1], row[2]));
 					break;
 				default: 
 					System.out.println("Invalid user: " + line);

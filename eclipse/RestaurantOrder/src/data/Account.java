@@ -1,11 +1,16 @@
 package data;
 
 //Abstract classes can implement methods; they are not as strict as interfaces
-public abstract class Account {
+public class Account {
 	// changed username status from public->private; use getters
 	// More reliability and control
 	private String username;
 	private String password;
+	
+	public Account(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 	
 	public boolean verifyPass(String input) {
 		// String.equals(String) condition that they are not passing

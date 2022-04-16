@@ -11,11 +11,13 @@ import data.Customer;
 
 public class ConfirmationGUI extends JPanel {
 	
-	protected JPanel headerPanel, panel1, panel2;
-	protected JLabel confirmationJL, customerNumJL, timeJL;
+
 	protected JButton loginHeader, home, cart;
 	
 	public ConfirmationGUI() {
+		
+		JPanel headerPanel, panel1, panel2;
+		JLabel confirmationJL, customerNumJL, timeJL;
 		
 		Color gray = new Color(222, 222,  222);
 		
